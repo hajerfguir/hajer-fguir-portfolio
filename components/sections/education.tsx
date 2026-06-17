@@ -2,6 +2,7 @@
 
 import { GraduationCap, Award, BookOpen, Calendar } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import { SectionHeader } from "@/components/section-header"
 
 const certifications = [
   {
@@ -34,14 +35,11 @@ export function EducationSection() {
     <section id="education" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="space-y-4 mb-16">
-          <p className="text-primary font-medium tracking-wide uppercase text-sm">
-            Education
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground text-balance">
-            Academic background
-          </h2>
-        </div>
+        <SectionHeader
+          label="Education"
+          title="Academic background"
+          centered={true}
+        />
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Main Education */}

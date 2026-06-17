@@ -1,12 +1,31 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Github, Linkedin, Mail, ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { StarfieldBackground } from "@/components/starfield-background"
+import { cn } from "@/lib/utils"
+
+// Carousel images cycle in the order requested: graduation, profile, photo 3, photo 4.
+const heroImages = [
+  { src: "/images/hero-1.jpg", alt: "Hajer Fguir at her University of Ottawa graduation", position: "42% 22%" },
+  { src: "/images/profile.png", alt: "Hajer Fguir - Software Engineer", position: "50% 12%" },
+  { src: "/images/hero-3.jpg", alt: "Hajer Fguir in professional attire", position: "50% 16%" },
+  { src: "/images/hero-4.jpg", alt: "Hajer Fguir in business attire", position: "50% 14%" },
+]
 
 export function HeroSection() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % heroImages.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section
       id="home"
@@ -104,20 +123,46 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right side - Profile Image */}
-          <div className="flex justify-center lg:justify-end animate-fade-in animation-delay-400">
+          {/* Right side - Animated Image Carousel */}
+          <div className="flex flex-col items-center lg:items-end gap-5 animate-fade-in animation-delay-400">
             <div className="relative">
               {/* Decorative ring */}
               <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-2xl" />
               <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-border/50 shadow-2xl">
-                <Image
-                  src="/images/profile.png"
-                  alt="Hajer Fguir - Software Engineer"
-                  fill
-                  className="object-cover object-top"
-                  priority
-                />
+                {heroImages.map((image, index) => (
+                  <Image
+                    key={image.src}
+                    src={image.src || "/placeholder.svg"}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 1024px) 20rem, 24rem"
+                    style={{ objectPosition: image.position }}
+                    className={cn(
+                      "object-cover transition-opacity duration-1000 ease-in-out",
+                      index === activeIndex ? "opacity-100" : "opacity-0"
+                    )}
+                    priority={index === 0}
+                  />
+                ))}
               </div>
+            </div>
+
+            {/* Carousel indicators */}
+            <div className="flex items-center gap-2">
+              {heroImages.map((image, index) => (
+                <button
+                  key={image.src}
+                  type="button"
+                  onClick={() => setActiveIndex(index)}
+                  aria-label={`Show image ${index + 1}`}
+                  className={cn(
+                    "h-2 rounded-full transition-all duration-300 cursor-pointer",
+                    index === activeIndex
+                      ? "w-6 bg-primary"
+                      : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                  )}
+                />
+              ))}
             </div>
           </div>
         </div>

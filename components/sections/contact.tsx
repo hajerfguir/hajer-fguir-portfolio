@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import { SectionHeader } from "@/components/section-header"
 
 export function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -61,18 +62,12 @@ export function ContactSection() {
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="space-y-4 mb-16 text-center">
-          <p className="text-primary font-medium tracking-wide uppercase text-sm">
-            Get In Touch
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground text-balance">
-            Let&apos;s Start a Conversation
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Have a project in mind or want to discuss opportunities? I&apos;d love to
-            hear from you.
-          </p>
-        </div>
+        <SectionHeader
+          label="Get In Touch"
+          title="Let's Start a Conversation"
+          subtitle="Have a project in mind or want to discuss opportunities? I'd love to hear from you."
+          centered={true}
+        />
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Message Preview Panel - macOS style */}

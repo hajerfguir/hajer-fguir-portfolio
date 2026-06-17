@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Code, Layers, Cloud, Shield, Cpu } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { SectionHeader } from "@/components/section-header"
 
 const skillCategories = [
   {
@@ -46,17 +47,12 @@ export function SkillsSection() {
     <section id="skills" className="py-24 sm:py-32 bg-secondary/30">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="space-y-4 mb-16">
-          <p className="text-primary font-medium tracking-wide uppercase text-sm">
-            Skills
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground text-balance">
-            Technical expertise
-          </h2>
-          <p className="text-muted-foreground max-w-2xl text-pretty">
-            A comprehensive toolkit spanning multiple domains of software engineering.
-          </p>
-        </div>
+        <SectionHeader
+          label="Skills"
+          title="Technical expertise"
+          subtitle="A comprehensive toolkit spanning multiple domains of software engineering."
+          centered={true}
+        />
 
         {/* Category Tabs */}
         <div className="flex flex-wrap gap-2 mb-12">

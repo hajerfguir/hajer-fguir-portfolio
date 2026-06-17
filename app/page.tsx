@@ -9,6 +9,7 @@ import { ContactSection } from "@/components/sections/contact"
 import { Footer } from "@/components/footer"
 import { CookieConsent } from "@/components/cookie-consent"
 import { AIAssistant } from "@/components/ai-assistant"
+import { ScrollToTop } from "@/components/scroll-to-top"
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <ContactSection />
       <Footer />
       <CookieConsent />
+      <ScrollToTop />
       <AIAssistant />
     </main>
   )

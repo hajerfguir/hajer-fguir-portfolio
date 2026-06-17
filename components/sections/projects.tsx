@@ -4,6 +4,7 @@ import { Github, ExternalLink, Car, MessageSquare, Home } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { SectionHeader } from "@/components/section-header"
 
 const projects = [
   {
@@ -61,17 +62,12 @@ export function ProjectsSection() {
     <section id="projects" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="space-y-4 mb-16">
-          <p className="text-primary font-medium tracking-wide uppercase text-sm">
-            Projects
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground text-balance">
-            Featured work
-          </h2>
-          <p className="text-muted-foreground max-w-2xl text-pretty">
-            A selection of projects showcasing my expertise in AI, embedded systems, and full-stack development.
-          </p>
-        </div>
+        <SectionHeader
+          label="Projects"
+          title="Featured work"
+          subtitle="A selection of projects showcasing my expertise in AI, embedded systems, and full-stack development."
+          centered={true}
+        />
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
