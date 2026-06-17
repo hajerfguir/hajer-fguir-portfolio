@@ -10,10 +10,10 @@ import { cn } from "@/lib/utils"
 
 // Carousel images cycle in the order requested: graduation, profile, photo 3, photo 4.
 const heroImages = [
-  { src: "/images/hero-1.jpg", alt: "Hajer Fguir at her University of Ottawa graduation", position: "42% 22%" },
-  { src: "/images/profile.png", alt: "Hajer Fguir - Software Engineer", position: "50% 12%" },
-  { src: "/images/hero-3.jpg", alt: "Hajer Fguir in professional attire", position: "50% 16%" },
-  { src: "/images/hero-4.jpg", alt: "Hajer Fguir in business attire", position: "50% 14%" },
+  { src: "/images/hero-1.png", alt: "graduation", position: "42% 22%" },
+  { src: "/images/hero-2.png", alt: "graduating", position: "50% 12%" },
+  { src: "/images/hero-3.png", alt: "professional", position: "50% 16%" },
+  { src: "/images/hero-4.png", alt: "business", position: "50% 14%" },
 ]
 
 export function HeroSection() {
