@@ -126,6 +126,30 @@
   }
   html {
     scroll-behavior: smooth;
+    @apply font-sans;
+  }
+
+  /* Hand cursor on every interactive element (buttons, links, toggles, etc.) */
+  button:not(:disabled),
+  a[href],
+  [role="button"]:not([aria-disabled="true"]),
+  [role="tab"],
+  [role="menuitem"],
+  summary,
+  label[for],
+  select,
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"],
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
   }
 }
 
