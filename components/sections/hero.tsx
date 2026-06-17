@@ -45,19 +45,16 @@ export function HeroSection() {
           {/* Left side - Content */}
           <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-4">
-              <p className="text-primary font-medium tracking-wide uppercase text-sm animate-fade-in">
-                Software Engineer
-              </p>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground animate-fade-in animation-delay-200 text-balance">
                 Hajer Fguir
               </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-fade-in animation-delay-400 text-pretty">
-                Cybersecurity | APIs | CI/CD | AI
+              <p className="text-primary font-medium tracking-wide uppercase text-sm animate-fade-in">
+                Software Developer
               </p>
             </div>
 
             <p className="text-muted-foreground text-lg max-w-xl mx-auto lg:mx-0 animate-fade-in animation-delay-600 leading-relaxed text-pretty">
-              Building secure, scalable, and impactful technology. Passionate about creating robust software solutions that make a difference.
+              Building secure, scalable, and impactful technology. Passionate about creating reliable software solutions and exploring how cybersecurity, AI, and automation can improve the way systems are built and protected.
             </p>
 
             {/* CTA Buttons */}
