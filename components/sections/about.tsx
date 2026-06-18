@@ -7,22 +7,22 @@ const highlights = [
   {
     icon: Shield,
     title: "Cybersecurity",
-    description: "Implementing SSDLC practices, SAML2, SSO, and security-first development",
+    description: "Exploring secure development, SSDLC practices, authentication, and application security.",
   },
   {
     icon: Code,
-    title: "Full-Stack Development",
-    description: "Building scalable applications with React, Node.js, .NET, and Python",
+    title: "Software Development",
+    description: "Building reliable applications with React, Node.js, .NET, Python, and modern web technologies.",
   },
   {
     icon: Cloud,
-    title: "Cloud & DevOps",
-    description: "CI/CD pipelines, Docker, Azure AD, and modern deployment practices",
+    title: "DevOps & Automation",
+    description: "Working with CI/CD, Docker, API testing, automation, and modern development workflows.",
   },
   {
     icon: Cpu,
     title: "AI & Machine Learning",
-    description: "Developing AI-powered solutions with PyTorch, OpenCV, and OpenAI",
+    description: "Exploring AI-powered solutions using OpenAI, PyTorch, OpenCV, and intelligent automation.",
   },
 ]
 
@@ -33,7 +33,7 @@ export function AboutSection() {
         {/* Section Header */}
         <SectionHeader
           label="About Me"
-          title="Passionate about building secure and impactful software"
+          title="Where secure engineering meets purposeful innovation"
           centered={true}
         />
 
@@ -41,36 +41,43 @@ export function AboutSection() {
           {/* Left - Bio */}
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-              I&apos;m a Computer Engineering graduate from the University of Ottawa with a focus on 
-              secure software development, API design, and modern DevOps practices. My journey in 
-              tech has been driven by a passion for building robust, scalable solutions that make 
-              a real impact.
+              Welcome to my digital space. If we haven&apos;t had the opportunity
+              to meet in person yet, consider this my way of introducing myself
+              beyond a resume.
             </p>
+
             <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-              As a Co-Founder and Software Developer at Novasoft Vision Inc., I lead technical 
-              initiatives while applying secure coding practices across the full stack. My experience 
-              spans from optimizing CI/CD pipelines at major corporations like Canada Post to 
-              developing verification tools at Dana TM4.
+              I&apos;m Hajer Fguir, a Computer Engineering graduate and Software
+              Developer at the University of Ottawa. I&apos;m passionate about
+              building technology that is not only functional, but secure,
+              thoughtful, and meaningful.
             </p>
+
             <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-              I&apos;m particularly interested in the intersection of cybersecurity and modern software 
-              engineering, constantly exploring ways to integrate security into every phase of the 
-              development lifecycle.
+              My journey has taken me through government, private industry,
+              university IT, entrepreneurship, and teaching. Along the way,
+              I&apos;ve learned to embrace complexity, ask better questions, and
+              turn ideas into solutions that create real value. Beyond code, I&apos;m driven by curiosity, collaboration, and
+              continuous growth. I&apos;m especially inspired by the intersection
+              of cybersecurity, AI, and automation, and by the people and
+              communities that make technology more impactful.
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-border">
               <div className="text-center">
-                <p className="text-3xl font-bold text-primary">4+</p>
+                <p className="text-3xl font-bold text-primary">3+</p>
                 <p className="text-sm text-muted-foreground">Years Experience</p>
               </div>
+
               <div className="text-center">
                 <p className="text-3xl font-bold text-primary">10+</p>
                 <p className="text-sm text-muted-foreground">Projects</p>
               </div>
+
               <div className="text-center">
                 <p className="text-3xl font-bold text-primary">5+</p>
-                <p className="text-sm text-muted-foreground">Companies</p>
+                <p className="text-sm text-muted-foreground">Organizations</p>
               </div>
             </div>
           </div>
@@ -86,7 +93,11 @@ export function AboutSection() {
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <item.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+
+                <h3 className="font-semibold text-foreground mb-2">
+                  {item.title}
+                </h3>
+
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>
