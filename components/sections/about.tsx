@@ -41,13 +41,7 @@ export function AboutSection() {
           {/* Left - Bio */}
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-              Welcome to my digital space. If we haven&apos;t had the opportunity
-              to meet in person yet, consider this my way of introducing myself
-              beyond a resume.
-            </p>
-
-            <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-              I&apos;m Hajer Fguir, a Computer Engineering graduate and Software
+              Welcome to my digital space. I&apos;m Hajer Fguir, a Computer Engineering graduate and Software
               Developer at the University of Ottawa. I&apos;m passionate about
               building technology that is not only functional, but secure,
               thoughtful, and meaningful.
@@ -57,8 +51,7 @@ export function AboutSection() {
               My journey has taken me through government, private industry,
               university IT, entrepreneurship, and teaching. Along the way,
               I&apos;ve learned to embrace complexity, ask better questions, and
-              turn ideas into solutions that create real value. Beyond code, I&apos;m driven by curiosity, collaboration, and
-              continuous growth. I&apos;m especially inspired by the intersection
+              turn ideas into solutions that create real value. I&apos;m especially inspired by the intersection
               of cybersecurity, AI, and automation, and by the people and
               communities that make technology more impactful.
             </p>

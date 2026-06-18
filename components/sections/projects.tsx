@@ -7,9 +7,8 @@ import {
   MessageSquare,
   Home,
   Cpu,
-  Bell,
   Radio,
-  Utensils,
+  Globe,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react"
@@ -26,7 +25,16 @@ const projects = [
     description:
       "An intelligent driver alert system designed to monitor driver attentiveness in real time using sensors, computer vision, and machine-learning-based detection.",
     icon: Car,
-    technologies: ["React.js", "TypeScript", "Electron.js", "Firebase", "PyTorch", "OpenCV", "Dlib", "Jetson Nano"],
+    technologies: [
+      "React.js",
+      "TypeScript",
+      "Electron.js",
+      "Firebase",
+      "PyTorch",
+      "OpenCV",
+      "Dlib",
+      "Jetson Nano",
+    ],
     highlights: [
       "Detects signs of drowsiness, fatigue, or distress",
       "Provides real-time driver alerts for unsafe behavior",
@@ -42,7 +50,16 @@ const projects = [
     description:
       "A real-time smart home automation system that enables touchless control of lights, fans, and temperature using hand gestures and a locally hosted web interface.",
     icon: Home,
-    technologies: ["C++", "ESP32", "FreeRTOS", "JavaScript", "LittleFS", "APDS-9960", "DHT11", "REST API"],
+    technologies: [
+      "C++",
+      "ESP32",
+      "FreeRTOS",
+      "JavaScript",
+      "LittleFS",
+      "APDS-9960",
+      "DHT11",
+      "REST API",
+    ],
     highlights: [
       "Gesture-based control using APDS-9960 sensor",
       "Real-time sensor processing with ESP32 and FreeRTOS",
@@ -64,9 +81,32 @@ const projects = [
       "User-friendly interface hosted on Hugging Face Spaces",
       "Voice interaction support using gTTS",
     ],
-    github: null,
-    demo: "https://huggingface.co/spaces/HajerFguir/SEG3525",
+    github: "https://huggingface.co/spaces/HajerFguir/SEG3525",
+    demo: null,
     featured: true,
+  },
+  {
+    title: "Personal Portfolio Website",
+    subtitle: "Frontend Portfolio Project",
+    description:
+      "A modern personal portfolio website designed to showcase my background, experience, projects, skills, and professional journey in a clean and interactive way.",
+    icon: Globe,
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "GitHub",
+      "Vercel",
+    ],
+    highlights: [
+      "Built with a responsive and professional user interface",
+      "Includes interactive project navigation and smooth animations",
+      "Prepared for future deployment with a custom domain",
+    ],
+    github: "#", // Add your GitHub repo URL here later when public
+    demo: "#", // Add your live portfolio URL here later
+    featured: false,
   },
   {
     title: "M.Glam Beauty Salon Website",
@@ -82,22 +122,6 @@ const projects = [
     ],
     github: "https://github.com/hajerfguir/mglam-beauty-salon",
     demo: "https://hajerfguir.github.io/mglam-beauty-salon/",
-    featured: false,
-  },
-  {
-    title: "MIPS Pipelined RISC Processor",
-    subtitle: "VHDL / FPGA Design",
-    description:
-      "A 5-stage pipelined RISC processor designed in VHDL, integrating control and datapaths with pipeline registers on an Altera DE2 FPGA.",
-    icon: Cpu,
-    technologies: ["VHDL", "FPGA", "MIPS", "CPU Design", "Pipelining", "Quartus II"],
-    highlights: [
-      "Implemented IF, ID, EX, MEM, and WB pipeline stages",
-      "Designed hazard detection and data forwarding units",
-      "Validated timing, clock frequency, and execution cycles",
-    ],
-    github: null,
-    demo: null,
     featured: false,
   },
   {
@@ -117,34 +141,25 @@ const projects = [
     featured: false,
   },
   {
-    title: "Alarm System on Microcontroller",
-    subtitle: "Embedded Systems Project",
+    title: "MIPS Pipelined RISC Processor",
+    subtitle: "VHDL / FPGA Design",
     description:
-      "An embedded alarm system built in C on the Dragon-12 board, integrating keypad input, display output, speaker alerts, and temperature sensing.",
-    icon: Bell,
-    technologies: ["C", "Assembly", "Dragon-12", "Microcontroller", "Interrupts", "Timers", "ADC"],
-    highlights: [
-      "Integrated keypad, 7-segment display, speaker, and thermistor",
-      "Used interrupts, timers, and ADC for real-time behavior",
-      "Focused on modular embedded systems programming",
+      "A 5-stage pipelined RISC processor designed in VHDL, integrating control and datapaths with pipeline registers on an Altera DE2 FPGA.",
+    icon: Cpu,
+    technologies: [
+      "VHDL",
+      "FPGA",
+      "MIPS",
+      "CPU Design",
+      "Pipelining",
+      "Quartus II",
     ],
-    github: "https://github.com/hajerfguir/AlarmSystem",
-    demo: null,
-    featured: false,
-  },
-  {
-    title: "Restaurant Webpage",
-    subtitle: "Frontend Web Project",
-    description:
-      "A responsive restaurant webpage built to practice frontend fundamentals, including layout design, styling, navigation, and content presentation.",
-    icon: Utensils,
-    technologies: ["HTML", "CSS"],
     highlights: [
-      "Built a clean static restaurant webpage",
-      "Practiced responsive layout and visual styling",
-      "Focused on frontend structure and presentation",
+      "Implemented IF, ID, EX, MEM, and WB pipeline stages",
+      "Designed hazard detection and data forwarding units",
+      "Validated timing, clock frequency, and execution cycles",
     ],
-    github: "https://github.com/hajerfguir/restaurant-webpage",
+    github: null,
     demo: null,
     featured: false,
   },
@@ -152,28 +167,28 @@ const projects = [
 
 export function ProjectsSection() {
   const [startIndex, setStartIndex] = useState(0)
+  const [direction, setDirection] = useState<"next" | "previous">("next")
   const projectsPerPage = 3
-  const visibleProjects = projects.slice(startIndex, startIndex + projectsPerPage)
 
-  const canGoBack = startIndex > 0
-  const canGoNext = startIndex + projectsPerPage < projects.length
+  const visibleProjects = Array.from({ length: projectsPerPage }, (_, index) => {
+    return projects[(startIndex + index) % projects.length]
+  })
 
   const handlePrevious = () => {
-    if (canGoBack) {
-      setStartIndex(startIndex - projectsPerPage)
-    }
+    setDirection("previous")
+    setStartIndex((prevIndex) =>
+      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+    )
   }
 
   const handleNext = () => {
-    if (canGoNext) {
-      setStartIndex(startIndex + projectsPerPage)
-    }
+    setDirection("next")
+    setStartIndex((prevIndex) => (prevIndex + 1) % projects.length)
   }
 
   return (
-    <section id="projects" className="py-24 sm:py-32">
+    <section id="projects" className="py-24 sm:py-32 overflow-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <SectionHeader
           label="Projects"
           title="Featured work"
@@ -181,64 +196,69 @@ export function ProjectsSection() {
           centered={true}
         />
 
-        {/* Projects Navigation + Grid */}
         <div className="relative">
           {/* Left Navigation */}
           <Button
             type="button"
-            variant="outline"
             size="icon"
             onClick={handlePrevious}
-            disabled={!canGoBack}
-            className="absolute -left-5 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-background/80 backdrop-blur md:flex"
+            className="absolute -left-10 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 rounded-full border border-primary/40 bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:bg-primary/90 hover:scale-110 lg:-left-16 md:flex"
             aria-label="Previous projects"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-6 w-6" />
           </Button>
 
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {visibleProjects.map((project, index) => (
+          {/* Projects Grid with Slide Animation */}
+          <div
+            key={startIndex}
+            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 ${
+              direction === "next"
+                ? "animate-slide-in-right"
+                : "animate-slide-in-left"
+            }`}
+          >
+            {visibleProjects.map((project) => (
               <div
                 key={project.title}
-                className="group relative flex flex-col p-6 rounded-xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-xl transition-all duration-300"
+                className="group relative flex cursor-pointer flex-col p-6 rounded-xl bg-card border border-border/50 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2 hover:scale-[1.03] transition-all duration-300"
               >
-                {/* Featured Badge */}
                 {project.featured && (
                   <div className="absolute -top-3 -right-3">
-                    <Badge className="bg-primary text-primary-foreground">Featured</Badge>
+                    <Badge className="bg-primary text-primary-foreground">
+                      Featured
+                    </Badge>
                   </div>
                 )}
 
-                {/* Icon */}
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <project.icon className="w-6 h-6 text-primary" />
                 </div>
 
-                {/* Title & Subtitle */}
                 <div className="mb-3">
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{project.subtitle}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {project.subtitle}
+                  </p>
                 </div>
 
-                {/* Description */}
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-grow">
                   {project.description}
                 </p>
 
-                {/* Highlights */}
                 <ul className="space-y-1.5 mb-4">
                   {project.highlights.map((highlight, i) => (
-                    <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                    <li
+                      key={i}
+                      className="text-xs text-muted-foreground flex gap-2"
+                    >
                       <span className="text-primary">•</span>
                       <span>{highlight}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* Technologies */}
                 <div className="flex flex-wrap gap-1.5 mb-6">
                   {project.technologies.slice(0, 5).map((tech) => (
                     <Badge
@@ -249,30 +269,75 @@ export function ProjectsSection() {
                       {tech}
                     </Badge>
                   ))}
+
                   {project.technologies.length > 5 && (
-                    <Badge variant="secondary" className="text-xs bg-secondary/50">
+                    <Badge
+                      variant="secondary"
+                      className="text-xs bg-secondary/50"
+                    >
                       +{project.technologies.length - 5}
                     </Badge>
                   )}
                 </div>
 
-                {/* Actions */}
                 <div className="flex gap-2 mt-auto">
-                  {project.github && (
-                    <Button asChild variant="outline" size="sm" className="flex-1">
-                      <Link href={project.github} target="_blank" rel="noopener noreferrer">
+                  {project.github && project.github !== "#" && (
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="sm"
+                      className="flex-1"
+                    >
+                      <Link
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Github className="w-4 h-4 mr-2" />
                         Code
                       </Link>
                     </Button>
                   )}
 
-                  {project.demo && (
-                    <Button asChild size="sm" className="flex-1 bg-primary hover:bg-primary/90">
-                      <Link href={project.demo} target="_blank" rel="noopener noreferrer">
+                  {project.github === "#" && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      className="flex-1 cursor-not-allowed opacity-70"
+                      disabled
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
+                    </Button>
+                  )}
+
+                  {project.demo && project.demo !== "#" && (
+                    <Button
+                      asChild
+                      size="sm"
+                      className="flex-1 bg-primary hover:bg-primary/90"
+                    >
+                      <Link
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Explore
                       </Link>
+                    </Button>
+                  )}
+
+                  {project.demo === "#" && (
+                    <Button
+                      type="button"
+                      size="sm"
+                      className="flex-1 cursor-not-allowed bg-primary/70"
+                      disabled
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Explore
                     </Button>
                   )}
                 </div>
@@ -283,52 +348,83 @@ export function ProjectsSection() {
           {/* Right Navigation */}
           <Button
             type="button"
-            variant="outline"
             size="icon"
             onClick={handleNext}
-            disabled={!canGoNext}
-            className="absolute -right-5 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-background/80 backdrop-blur md:flex"
+            className="absolute -right-10 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 rounded-full border border-primary/40 bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:bg-primary/90 hover:scale-110 lg:-right-16 md:flex"
             aria-label="Next projects"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-6 w-6" />
           </Button>
         </div>
 
         {/* Mobile Navigation */}
-        <div className="mt-8 flex justify-center gap-3 md:hidden">
+        <div className="mt-8 flex justify-center gap-4 md:hidden">
           <Button
             type="button"
-            variant="outline"
             size="icon"
             onClick={handlePrevious}
-            disabled={!canGoBack}
+            className="h-12 w-12 rounded-full border border-primary/40 bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:bg-primary/90"
             aria-label="Previous projects"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-6 w-6" />
           </Button>
 
           <Button
             type="button"
-            variant="outline"
             size="icon"
             onClick={handleNext}
-            disabled={!canGoNext}
+            className="h-12 w-12 rounded-full border border-primary/40 bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:bg-primary/90"
             aria-label="Next projects"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-6 w-6" />
           </Button>
         </div>
 
-        {/* View All Projects CTA */}
         <div className="mt-12 text-center">
           <Button asChild variant="outline" size="lg">
-            <Link href="https://github.com/hajerfguir" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://github.com/hajerfguir"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Github className="w-5 h-5 mr-2" />
               View All Projects on GitHub
             </Link>
           </Button>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(48px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-48px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .animate-slide-in-right {
+          animation: slideInRight 420ms ease-out;
+        }
+
+        .animate-slide-in-left {
+          animation: slideInLeft 420ms ease-out;
+        }
+      `}</style>
     </section>
   )
 }
