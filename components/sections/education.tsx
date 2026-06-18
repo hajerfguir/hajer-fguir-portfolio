@@ -6,14 +6,23 @@ import { SectionHeader } from "@/components/section-header"
 
 const certifications = [
   {
-    title: "Intro to AI - Machine Learning in Python - Intro to Data Engineering - Git and GitHub",
+    title: "AI, Generative AI & Machine Learning",
     issuer: "365 Data Science",
-    date: "Sep 2024 - Nov 2024",
+    date: "Oct 2024 - Nov 2024",
+    courses: [
+      "Intro to AI",
+      "Intro to ChatGPT and Generative AI",
+      "Machine Learning in Python",
+    ],
   },
   {
-    title: "Introduction to Front-End Development - Version Control",
-    issuer: "Meta (Coursera)",
-    date: "Aug 2023",
+    title: "Data Engineering, Git & GitHub",
+    issuer: "365 Data Science",
+    date: "Oct 2024 - Nov 2024",
+    courses: [
+      "Intro to Data Engineering",
+      "Git and GitHub",
+    ],
   },
 ]
 
@@ -50,14 +59,23 @@ export function EducationSection() {
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <GraduationCap className="w-7 h-7 text-primary" />
                 </div>
+
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground">University of Ottawa</h3>
-                  <p className="text-muted-foreground">BASc Computer Engineering, Co-op</p>
+                  <h3 className="text-xl font-semibold text-foreground">
+                    University of Ottawa
+                  </h3>
+                  <p className="text-muted-foreground">
+                    BASc Computer Engineering, Co-op
+                  </p>
+
                   <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
                     <Calendar className="w-4 h-4" />
                     <span>Sep 2021 - Dec 2025</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">Ottawa, ON, Canada</p>
+
+                  <p className="text-sm text-muted-foreground">
+                    Ottawa, ON, Canada
+                  </p>
                 </div>
               </div>
 
@@ -67,6 +85,7 @@ export function EducationSection() {
                   <Award className="w-4 h-4 text-primary" />
                   Scholarships & Awards
                 </h4>
+
                 <div className="flex flex-wrap gap-2">
                   <Badge className="bg-primary/10 text-primary hover:bg-primary/20 border-0">
                     Magna Cum Laude
@@ -86,6 +105,7 @@ export function EducationSection() {
                   <BookOpen className="w-4 h-4 text-primary" />
                   Relevant Coursework
                 </h4>
+
                 <div className="flex flex-wrap gap-1.5">
                   {relevantCourses.map((course) => (
                     <span
@@ -102,21 +122,45 @@ export function EducationSection() {
 
           {/* Certifications */}
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-foreground">Certifications</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              Certifications
+            </h3>
+
             <div className="space-y-4">
-              {certifications.map((cert, index) => (
+              {certifications.map((cert) => (
                 <div
-                  key={index}
+                  key={cert.title}
                   className="p-6 rounded-xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <Award className="w-5 h-5 text-primary" />
                     </div>
-                    <div>
-                      <h4 className="font-medium text-foreground mb-1">{cert.title}</h4>
-                      <p className="text-sm text-muted-foreground">{cert.issuer}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{cert.date}</p>
+
+                    <div className="space-y-2">
+                      <div>
+                        <h4 className="font-medium text-foreground mb-1">
+                          {cert.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
+                          {cert.issuer}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {cert.date}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {cert.courses.map((course) => (
+                          <Badge
+                            key={course}
+                            variant="secondary"
+                            className="text-xs bg-secondary/50 hover:bg-secondary"
+                          >
+                            {course}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -126,9 +170,9 @@ export function EducationSection() {
             {/* Additional Info Card */}
             <div className="p-6 rounded-xl bg-primary/5 border border-primary/10">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Continuously expanding my knowledge through online courses and certifications 
-                in emerging technologies, with a focus on AI, machine learning, and modern 
-                development practices.
+                Continuously expanding my knowledge through online learning in
+                artificial intelligence, machine learning, data engineering,
+                version control, and modern development practices.
               </p>
             </div>
           </div>
