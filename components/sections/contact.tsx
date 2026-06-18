@@ -2,7 +2,16 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Mail, Linkedin, Github, MapPin, Send, CheckCircle, Clock, User } from "lucide-react"
+import {
+  Mail,
+  Linkedin,
+  Github,
+  MapPin,
+  Send,
+  CheckCircle,
+  Clock,
+  User,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -12,6 +21,7 @@ import { SectionHeader } from "@/components/section-header"
 export function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,17 +41,46 @@ export function ContactSection() {
         })
       )
     }
+
     updateTime()
     const interval = setInterval(updateTime, 60000)
+
     return () => clearInterval(interval)
   }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsLoading(false)
-    setIsSubmitted(true)
+    setErrorMessage("")
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to send message")
+      }
+
+      setIsSubmitted(true)
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      })
+    } catch (error) {
+      console.error(error)
+      setErrorMessage(
+        "Sorry, something went wrong. Please try again or email me directly."
+      )
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleInputChange = (
@@ -80,30 +119,40 @@ export function ContactSection() {
                   <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
                   <div className="w-3 h-3 rounded-full bg-[#28c840]" />
                 </div>
+
                 <div className="flex-1 text-center">
                   <span className="text-sm font-medium text-foreground/80">
                     New Message
                   </span>
                 </div>
+
                 <Mail className="w-4 h-4 text-muted-foreground" />
               </div>
 
               {/* Email Header */}
               <div className="p-5 space-y-3 border-b border-border/30 bg-card">
                 <div className="flex items-center gap-3">
-                  <span className="text-sm text-muted-foreground w-14">To:</span>
+                  <span className="text-sm text-muted-foreground w-14">
+                    To:
+                  </span>
                   <span className="text-sm font-medium text-foreground">
                     hajerfguir@gmail.com
                   </span>
                 </div>
+
                 <div className="flex items-center gap-3">
-                  <span className="text-sm text-muted-foreground w-14">From:</span>
+                  <span className="text-sm text-muted-foreground w-14">
+                    From:
+                  </span>
                   <span className="text-sm text-foreground/70 italic">
                     {formData.email || "your@email.com"}
                   </span>
                 </div>
+
                 <div className="flex items-center gap-3">
-                  <span className="text-sm text-muted-foreground w-14">Subject:</span>
+                  <span className="text-sm text-muted-foreground w-14">
+                    Subject:
+                  </span>
                   <span className="text-sm text-foreground/70 italic">
                     {formData.subject || "New Collaboration Inquiry"}
                   </span>
@@ -120,7 +169,9 @@ export function ContactSection() {
                     </span>
                     .
                   </p>
+
                   <p>I&apos;m interested in working with you on a project.</p>
+
                   <div className="min-h-[80px] py-2">
                     {formData.message ? (
                       <p className="whitespace-pre-wrap">{formData.message}</p>
@@ -130,6 +181,7 @@ export function ContactSection() {
                       </p>
                     )}
                   </div>
+
                   <div className="pt-4 space-y-1">
                     <p>Best regards,</p>
                     <p className="font-medium italic text-primary">
@@ -145,8 +197,11 @@ export function ContactSection() {
                   <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
                   <span className="text-xs text-muted-foreground">Draft</span>
                 </div>
+
                 <span className="text-xs text-muted-foreground">
-                  {formData.message.length > 0 ? `${formData.message.length}` : "0"}{" "}
+                  {formData.message.length > 0
+                    ? `${formData.message.length}`
+                    : "0"}{" "}
                   characters
                 </span>
               </div>
@@ -163,6 +218,7 @@ export function ContactSection() {
                 <div className="w-10 h-10 rounded-lg bg-[#0077b5]/10 flex items-center justify-center group-hover:bg-[#0077b5]/20 transition-colors">
                   <Linkedin className="w-5 h-5 text-[#0077b5]" />
                 </div>
+
                 <div>
                   <p className="text-xs text-muted-foreground">LinkedIn</p>
                   <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
@@ -180,6 +236,7 @@ export function ContactSection() {
                 <div className="w-10 h-10 rounded-lg bg-foreground/5 flex items-center justify-center group-hover:bg-foreground/10 transition-colors">
                   <Github className="w-5 h-5 text-foreground" />
                 </div>
+
                 <div>
                   <p className="text-xs text-muted-foreground">GitHub</p>
                   <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
@@ -195,6 +252,7 @@ export function ContactSection() {
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
+
                 <div>
                   <p className="text-xs text-muted-foreground">Email</p>
                   <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
@@ -207,6 +265,7 @@ export function ContactSection() {
                 <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
                   <MapPin className="w-5 h-5 text-emerald-500" />
                 </div>
+
                 <div>
                   <p className="text-xs text-muted-foreground">Location</p>
                   <p className="text-sm font-medium text-foreground">
@@ -228,20 +287,28 @@ export function ContactSection() {
                       <CheckCircle className="w-10 h-10 text-primary" />
                     </div>
                   </div>
+
                   <div className="space-y-2">
                     <h3 className="text-2xl font-semibold text-foreground">
                       Message Sent!
                     </h3>
                     <p className="text-muted-foreground max-w-sm">
-                      Thank you for reaching out. I&apos;ll review your message and
-                      get back to you soon.
+                      Thank you for reaching out. I&apos;ll review your message
+                      and get back to you soon.
                     </p>
                   </div>
+
                   <Button
                     variant="outline"
                     onClick={() => {
                       setIsSubmitted(false)
-                      setFormData({ name: "", email: "", subject: "", message: "" })
+                      setErrorMessage("")
+                      setFormData({
+                        name: "",
+                        email: "",
+                        subject: "",
+                        message: "",
+                      })
                     }}
                     className="mt-4"
                   >
@@ -255,7 +322,8 @@ export function ContactSection() {
                       Send Me a Message
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      Fill out the form and I&apos;ll get back to you within 24 hours.
+                      Fill out the form and I&apos;ll get back to you within 24
+                      hours.
                     </p>
                   </div>
 
@@ -265,6 +333,7 @@ export function ContactSection() {
                         <Label htmlFor="name" className="text-sm font-medium">
                           Your Name <span className="text-primary">*</span>
                         </Label>
+
                         <div className="relative">
                           <Input
                             id="name"
@@ -283,6 +352,7 @@ export function ContactSection() {
                         <Label htmlFor="email" className="text-sm font-medium">
                           Email Address <span className="text-primary">*</span>
                         </Label>
+
                         <div className="relative">
                           <Input
                             id="email"
@@ -329,6 +399,10 @@ export function ContactSection() {
                         className="bg-background/50 border-border/50 focus:border-primary/50 resize-none"
                       />
                     </div>
+
+                    {errorMessage && (
+                      <p className="text-sm text-red-500">{errorMessage}</p>
+                    )}
 
                     <Button
                       type="submit"
