@@ -8,9 +8,9 @@ import { SectionHeader } from "@/components/section-header"
 
 const experiences = [
   {
-    company: "University of Ottawa",
-    organizationUrl: "https://www.uottawa.ca/fr",
-    logo: "/images/uottawa_logo.png",
+    company: "Uottawa IT",
+    organizationUrl: "https://www.uottawa.ca/about-us/information-technology",
+    logo: "/images/ti_uottawa_logo.jpeg",
     role: "Software Developer",
     type: "Full-time",
     period: "Jan 2026 – Present",
@@ -190,24 +190,24 @@ export function ExperienceSection() {
                   <div className="group p-6 rounded-xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
                     {/* Header */}
                     <div className="flex items-start justify-between gap-4 mb-4">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-4">
                         <Link
                           href={exp.organizationUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Visit ${exp.company} website`}
-                          className="w-12 h-12 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden border border-border/40 hover:border-primary/40 hover:scale-105 transition-all duration-300"
+                          className="w-20 h-20 rounded-xl bg-card flex items-center justify-center flex-shrink-0 overflow-hidden border border-border/50 hover:border-primary/40 hover:scale-105 transition-all duration-300"
                         >
                           {exp.logo ? (
                             <Image
                               src={exp.logo}
                               alt={`${exp.company} logo`}
-                              width={40}
-                              height={40}
-                              className="max-h-9 max-w-9 object-contain"
+                              width={90}
+                              height={90}
+                              className="h-full w-full object-contain p-1"
                             />
                           ) : (
-                            <Building2 className="w-5 h-5 text-primary" />
+                            <Building2 className="w-7 h-7 text-primary" />
                           )}
                         </Link>
 
