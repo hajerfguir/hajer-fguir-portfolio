@@ -104,8 +104,8 @@ const projects = [
       "Includes interactive project navigation and smooth animations",
       "Prepared for future deployment with a custom domain",
     ],
-    github: "#", // Add your GitHub repo URL here later when public
-    demo: "#", // Add your live portfolio URL here later
+    github: "https://github.com/hajerfguir/hajer-fguir-portfolio", 
+    demo: "https://www.hajerfguir.com/", 
     featured: false,
   },
   {
