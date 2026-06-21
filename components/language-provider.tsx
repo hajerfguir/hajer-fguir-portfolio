@@ -690,6 +690,12 @@ const translations: Record<Locale, any> = {
       moreInfo:
         "Je développe continuellement mes connaissances grâce à des cours en ligne en intelligence artificielle, apprentissage automatique, ingénierie des données, contrôle de version et pratiques de développement modernes.",
     },
+    cookie: {
+      title: "Préférences des cookies",
+      body: "Ce site utilise des cookies pour améliorer votre expérience de navigation et analyser le trafic du site.",
+      accept: "Accepter",
+      preferences: "Préférences",
+    },
     contact: {
       label: "Entrer en contact",
       title: "Commençons une conversation",
