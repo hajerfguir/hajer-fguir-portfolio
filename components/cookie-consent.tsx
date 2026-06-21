@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react"
 import { X, Cookie } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useTranslation } from "@/components/language-provider"
 
 export function CookieConsent() {
+  const { t } = useTranslation()
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -38,7 +40,7 @@ export function CookieConsent() {
           </div>
           <div className="flex-1 space-y-3">
             <div className="flex items-start justify-between gap-2">
-              <h3 className="font-medium text-foreground">Cookie Preferences</h3>
+              <h3 className="font-medium text-foreground">{t("cookie.title")}</h3>
               <button
                 onClick={declineCookies}
                 className="text-muted-foreground hover:text-foreground transition-colors"
@@ -48,7 +50,7 @@ export function CookieConsent() {
               </button>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              This site uses cookies to enhance your browsing experience and analyze site traffic.
+              {t("cookie.body")}
             </p>
             <div className="flex gap-2">
               <Button
@@ -56,14 +58,14 @@ export function CookieConsent() {
                 size="sm"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground"
               >
-                Accept
+                {t("cookie.accept")}
               </Button>
               <Button
                 onClick={declineCookies}
                 variant="outline"
                 size="sm"
               >
-                Preferences
+                {t("cookie.preferences")}
               </Button>
             </div>
           </div>

@@ -3,45 +3,25 @@
 import { GraduationCap, Award, BookOpen, Calendar } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { SectionHeader } from "@/components/section-header"
-import { useTranslation } from "@/components/language-provider"
-
-const certifications = [
-  {
-    title: "AI, Generative AI & Machine Learning",
-    issuer: "365 Data Science",
-    date: "Oct 2024 - Nov 2024",
-    courses: [
-      "Intro to AI",
-      "Intro to ChatGPT and Generative AI",
-      "Machine Learning in Python",
-    ],
-  },
-  {
-    title: "Data Engineering, Git & GitHub",
-    issuer: "365 Data Science",
-    date: "Oct 2024 - Nov 2024",
-    courses: [
-      "Intro to Data Engineering",
-      "Git and GitHub",
-    ],
-  },
-]
-
-const relevantCourses = [
-  "Software Concepts",
-  "Data Structures and Algorithms",
-  "OOP in Python and Java",
-  "Operating Systems",
-  "Embedded & Real-Time Systems",
-  "Digital Systems",
-  "Data Communications and Networking",
-  "Fundamentals of Cybersecurity",
-  "Artificial Intelligence",
-  "Computer Architecture",
-]
+import { useTranslation } from "../language-provider"
 
 export function EducationSection() {
   const { t } = useTranslation()
+  const certificationData = t(
+    "education.certificationCards"
+  ) as Array<{ title: string; issuer: string; date: string; courses: string[] }> | unknown
+  const relevantCourseData = t("education.relevantCourses") as string[] | unknown
+  const certificationList = Array.isArray(certificationData)
+    ? (certificationData as Array<{
+        title: string
+        issuer: string
+        date: string
+        courses: string[]
+      }>)
+    : []
+  const relevantCourseList = Array.isArray(relevantCourseData)
+    ? (relevantCourseData as string[])
+    : []
   return (
     <section id="education" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -64,10 +44,10 @@ export function EducationSection() {
 
                 <div>
                   <h3 className="text-xl font-semibold text-foreground">
-                    University of Ottawa
+                    {t("education.universityName")}
                   </h3>
                   <p className="text-muted-foreground">
-                    BASc Computer Engineering, Co-op
+                    {t("education.degree")}
                   </p>
 
                   <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
@@ -109,7 +89,7 @@ export function EducationSection() {
                 </h4>
 
                 <div className="flex flex-wrap gap-1.5">
-                  {relevantCourses.map((course) => (
+                  {relevantCourseList.map((course) => (
                     <span
                       key={course}
                       className="px-2.5 py-1 text-xs rounded-md bg-secondary/50 text-muted-foreground"
@@ -125,11 +105,11 @@ export function EducationSection() {
           {/* Certifications */}
           <div className="space-y-6">
             <h3 className="text-lg font-semibold text-foreground">
-              Certifications
+              {t("education.certifications")}
             </h3>
 
             <div className="space-y-4">
-              {certifications.map((cert) => (
+              {certificationList.map((cert) => (
                 <div
                   key={cert.title}
                   className="p-6 rounded-xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all duration-300"

@@ -255,9 +255,44 @@ const translations: Record<Locale, any> = {
     education: {
       label: "Education",
       title: "Academic background",
+      universityName: "University of Ottawa",
+      degree: "BASc Computer Engineering, Co-op",
       certifications: "Certifications",
       scholarships: "Scholarships & Awards",
       relevantCoursework: "Relevant Coursework",
+      relevantCourses: [
+        "Software Concepts",
+        "Data Structures and Algorithms",
+        "OOP in Python and Java",
+        "Operating Systems",
+        "Embedded & Real-Time Systems",
+        "Digital Systems",
+        "Data Communications and Networking",
+        "Fundamentals of Cybersecurity",
+        "Artificial Intelligence",
+        "Computer Architecture",
+      ],
+      certificationCards: [
+        {
+          title: "AI, Generative AI & Machine Learning",
+          issuer: "365 Data Science",
+          date: "Oct 2024 - Nov 2024",
+          courses: [
+            "Intro to AI",
+            "Intro to ChatGPT and Generative AI",
+            "Machine Learning in Python",
+          ],
+        },
+        {
+          title: "Data Engineering, Git & GitHub",
+          issuer: "365 Data Science",
+          date: "Oct 2024 - Nov 2024",
+          courses: [
+            "Intro to Data Engineering",
+            "Git and GitHub",
+          ],
+        },
+      ],
       moreInfo:
         "Continuously expanding my knowledge through online learning in artificial intelligence, machine learning, data engineering, version control, and modern development practices.",
     },
@@ -298,6 +333,12 @@ const translations: Record<Locale, any> = {
         respondTime: "I typically respond within 24–48 hours",
         error: "Sorry, something went wrong. Please try again or email me directly.",
       },
+    },
+    cookie: {
+      title: "Cookie Preferences",
+      body: "This site uses cookies to enhance your browsing experience and analyze site traffic.",
+      accept: "Accept",
+      preferences: "Preferences",
     },
     ai: {
       initialMessage:
@@ -608,9 +649,44 @@ const translations: Record<Locale, any> = {
     education: {
       label: "Éducation",
       title: "Parcours académique",
+      universityName: "Université d'Ottawa",
+      degree: "Baccalauréat en génie informatique, coop",
       certifications: "Certifications",
       scholarships: "Bourses et prix",
       relevantCoursework: "Cours pertinents",
+      relevantCourses: [
+        "Concepts logiciels",
+        "Structures de données et algorithmes",
+        "POO en Python et Java",
+        "Systèmes d'exploitation",
+        "Systèmes embarqués et temps réel",
+        "Systèmes numériques",
+        "Communications de données et réseaux",
+        "Fondamentaux de la cybersécurité",
+        "Intelligence artificielle",
+        "Architecture des ordinateurs",
+      ],
+      certificationCards: [
+        {
+          title: "IA, IA générative & apprentissage automatique",
+          issuer: "365 Data Science",
+          date: "Oct 2024 - Nov 2024",
+          courses: [
+            "Introduction à l'IA",
+            "Introduction à ChatGPT et l'IA générative",
+            "Apprentissage automatique en Python",
+          ],
+        },
+        {
+          title: "Ingénierie des données, Git & GitHub",
+          issuer: "365 Data Science",
+          date: "Oct 2024 - Nov 2024",
+          courses: [
+            "Introduction à l'ingénierie des données",
+            "Git et GitHub",
+          ],
+        },
+      ],
       moreInfo:
         "Je développe continuellement mes connaissances grâce à des cours en ligne en intelligence artificielle, apprentissage automatique, ingénierie des données, contrôle de version et pratiques de développement modernes.",
     },
