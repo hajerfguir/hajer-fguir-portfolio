@@ -277,7 +277,7 @@ function hasCookieConsentAccepted() {
 export function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false)
   const [showIntro, setShowIntro] = useState(false)
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
 
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -331,6 +331,19 @@ export function AIAssistant() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages, isTyping])
+
+  // Update the assistant's initial message when the locale changes
+  useEffect(() => {
+    setMessages((prev) => {
+      if (!prev || prev.length === 0) return prev
+      const copy = [...prev]
+      // update the first assistant message only
+      if (copy[0].role === "assistant") {
+        copy[0] = { ...copy[0], content: t("ai.initialMessage") }
+      }
+      return copy
+    })
+  }, [locale])
 
   useEffect(() => {
     const hasSeenIntro = localStorage.getItem("hajer-ai-intro-seen")
