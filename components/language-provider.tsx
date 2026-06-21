@@ -197,6 +197,10 @@ const translations: Record<Locale, any> = {
       sendForm: {
         title: "Send Me a Message",
         helper: "Fill out the form and I'll get back to you within 24 hours.",
+        greeting: "Hi, my name is",
+        detailsPlaceholder: "[Your project details will appear here...]",
+        signature: "Best regards,",
+        signaturePlaceholder: "[your name]",
         name: "Your Name",
         namePlaceholder: "John Doe",
         email: "Email Address",
@@ -475,6 +479,10 @@ const translations: Record<Locale, any> = {
       sendForm: {
         title: "Envoyez-moi un message",
         helper: "Remplissez le formulaire et je vous répondrai dans les 24 heures.",
+        greeting: "Bonjour, je m'appelle",
+        detailsPlaceholder: "[Les détails de votre projet apparaîtront ici...]",
+        signature: "Cordialement,",
+        signaturePlaceholder: "[votre nom]",
         name: "Votre nom",
         namePlaceholder: "John Doe",
         email: "Adresse e-mail",

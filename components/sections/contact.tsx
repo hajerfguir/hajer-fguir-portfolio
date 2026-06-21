@@ -163,7 +163,7 @@ export function ContactSection() {
               <div className="p-6 min-h-[280px] bg-background/50">
                 <div className="space-y-4 text-foreground/80">
                   <p>
-                    Hi, my name is{" "}
+                    {t("contact.sendForm.greeting")} {" "}
                     <span className="font-medium text-primary italic">
                       {formData.name || t("contact.sendForm.namePlaceholder")}
                     </span>
@@ -177,15 +177,15 @@ export function ContactSection() {
                       <p className="whitespace-pre-wrap">{formData.message}</p>
                     ) : (
                       <p className="text-muted-foreground/50 italic">
-                        [Your project details will appear here...]
+                        {t("contact.sendForm.detailsPlaceholder")}
                       </p>
                     )}
                   </div>
 
                   <div className="pt-4 space-y-1">
-                    <p>Best regards,</p>
+                    <p>{t("contact.sendForm.signature")}</p>
                     <p className="font-medium italic text-primary">
-                      {formData.name || "[your name]"}
+                      {formData.name || t("contact.sendForm.signaturePlaceholder")}
                     </p>
                   </div>
                 </div>
