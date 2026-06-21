@@ -45,7 +45,7 @@ export function Footer() {
               HF
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-              Software Engineer passionate about building secure, scalable, and 
+              Software Developer passionate about building secure, scalable, and 
               impactful technology solutions.
             </p>
           </div>
