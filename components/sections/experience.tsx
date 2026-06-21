@@ -5,9 +5,11 @@ import Link from "next/link"
 import { Building2, ExternalLink } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { SectionHeader } from "@/components/section-header"
+import { useTranslation } from "@/components/language-provider"
 
 const experiences = [
   {
+    id: "uottawa_it",
     company: "Uottawa IT",
     organizationUrl: "https://www.uottawa.ca/about-us/information-technology",
     logo: "/images/ti_uottawa_logo.jpeg",
@@ -33,6 +35,7 @@ const experiences = [
     ],
   },
   {
+    id: "uottawa",
     company: "University of Ottawa",
     organizationUrl: "https://www.uottawa.ca/fr",
     logo: "/images/uottawa_logo.png",
@@ -46,18 +49,10 @@ const experiences = [
       "Developed and maintained RESTful APIs using JavaScript, Node.js, Docker, Redis, and CI/CD workflows",
       "Conducted end-to-end API validation and performance testing to support high-volume user traffic and system reliability",
     ],
-    technologies: [
-      "JavaScript",
-      "Node.js",
-      "Docker",
-      "Redis",
-      "REST APIs",
-      "JMeter",
-      "Postman",
-      "CI/CD",
-    ],
+    technologies: ["JavaScript", "Node.js", "Docker", "Redis", "REST APIs", "Postman", "CI/CD"],
   },
   {
+    id: "uottawa_faculty",
     company: "University of Ottawa — Faculty of Engineering",
     organizationUrl: "https://www.uottawa.ca/faculty-engineering/",
     logo: "/images/Engineering-uottawa.jpeg",
@@ -71,16 +66,10 @@ const experiences = [
       "Conducted lab sessions and provided one-on-one support in Python programming, software engineering concepts, and core computing fundamentals",
       "Strengthened communication, mentorship, and leadership skills by working with students from diverse technical backgrounds",
     ],
-    technologies: [
-      "Python",
-      "Programming",
-      "Software Engineering",
-      "Teaching",
-      "Mentorship",
-      "Academic Support",
-    ],
+    technologies: ["Python", "Programming", "Software Engineering", "Teaching", "Mentorship", "Academic Support"],
   },
   {
+    id: "novasoft",
     company: "Novasoft Vision Incorporated",
     organizationUrl: "https://novasoftvision.com/",
     logo: "/images/novasoft Logo.png",
@@ -94,16 +83,10 @@ const experiences = [
       "Defined technical requirements and contributed to full-stack development while applying secure coding practices",
       "Worked across technical, product, and entrepreneurial responsibilities, strengthening ownership, adaptability, and problem-solving skills",
     ],
-    technologies: [
-      "Python",
-      "AVL Concerto",
-      "Full-Stack Development",
-      "Secure Coding",
-      "Product Development",
-      "Entrepreneurship",
-    ],
+    technologies: ["Python", "AVL Concerto", "Full-Stack Development", "Secure Coding", "Product Development", "Entrepreneurship"],
   },
   {
+    id: "dana_tm4",
     company: "Dana TM4 Incorporated",
     organizationUrl: "https://www.dana.com/",
     logo: "/images/dana_TM4.png",
@@ -117,18 +100,10 @@ const experiences = [
       "Built internal web tools using JavaScript to standardize database outputs and improve engineering visibility",
       "Contributed to secure data workflows and authentication-related integrations, including SAML2-based SSO with Microsoft Azure AD",
     ],
-    technologies: [
-      "Python",
-      "JavaScript",
-      "SQL",
-      "Automation",
-      "Data Analysis",
-      "SAML2",
-      "Azure AD",
-      "Engineering Tools",
-    ],
+    technologies: ["Python", "JavaScript", "SQL", "Automation", "Data Analysis", "SAML2", "Azure AD", "Engineering Tools"],
   },
   {
+    id: "canada_post",
     company: "Canada Post Corporation",
     organizationUrl: "https://www.canadapost-postescanada.ca/cpc/en/home.page",
     logo: "/images/canada-post-logo.png",
@@ -142,26 +117,26 @@ const experiences = [
       "Supported KPI analysis, reporting improvements, and data-driven decision-making in an enterprise environment",
       "Gained experience working with business stakeholders, technical systems, and large-scale operational data",
     ],
-    technologies: [
-      "Python",
-      "Power BI",
-      "Data Analysis",
-      "Automation",
-      "Reporting",
-      "KPI Analysis",
-    ],
+    technologies: ["Python", "Power BI", "Data Analysis", "Automation", "Reporting", "KPI Analysis"],
   },
 ]
 
 export function ExperienceSection() {
+  const { t } = useTranslation()
+
+  const get = (key: string, fallback: any) => {
+    const val = t(key)
+    return typeof val === "string" && val === key ? fallback : val
+  }
+
   return (
     <section id="experience" className="py-24 sm:py-32 bg-secondary/30">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <SectionHeader
-          label="Experience"
-          title="My professional journey"
-          subtitle="Building expertise through diverse roles and impactful projects"
+          label={t("experience.label")}
+          title={t("experience.title")}
+          subtitle={t("experience.subtitle")}
           centered={true}
         />
 
@@ -223,7 +198,7 @@ export function ExperienceSection() {
                           </Link>
 
                           <p className="text-sm text-muted-foreground">
-                            {exp.location}
+                            {get(`experience.items.${exp.id}.location`, exp.location)}
                           </p>
                         </div>
                       </div>
@@ -231,22 +206,20 @@ export function ExperienceSection() {
 
                     {/* Role & Period */}
                     <div className="mb-4">
-                      <p className="font-medium text-foreground">{exp.role}</p>
+                      <p className="font-medium text-foreground">{get(`experience.items.${exp.id}.role`, exp.role)}</p>
                       <p className="text-sm text-muted-foreground">
-                        {exp.type} | {exp.period}
+                        {get(`experience.items.${exp.id}.type`, exp.type)} | {get(`experience.items.${exp.id}.period`, exp.period)}
                       </p>
                     </div>
 
                     {/* Description */}
                     <ul className="space-y-2 mb-4">
-                      {exp.description.map((item, i) => (
+                      {(get(`experience.items.${exp.id}.description`, exp.description) as string[]).map((item, i) => (
                         <li
                           key={i}
                           className="text-sm text-muted-foreground flex gap-2"
                         >
-                          <span className="text-primary mt-1.5 flex-shrink-0">
-                            •
-                          </span>
+                          <span className="text-primary mt-1.5 flex-shrink-0">•</span>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -255,11 +228,7 @@ export function ExperienceSection() {
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-2">
                       {exp.technologies.map((tech) => (
-                        <Badge
-                          key={tech}
-                          variant="secondary"
-                          className="text-xs bg-secondary/50 hover:bg-secondary"
-                        >
+                        <Badge key={tech} variant="secondary" className="text-xs bg-secondary/50 hover:bg-secondary">
                           {tech}
                         </Badge>
                       ))}

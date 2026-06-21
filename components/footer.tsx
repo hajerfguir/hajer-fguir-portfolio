@@ -2,15 +2,16 @@
 
 import Link from "next/link"
 import { Github, Linkedin, Mail, Heart } from "lucide-react"
+import { useTranslation } from "@/components/language-provider"
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Education", href: "#education" },
-  { name: "Contact", href: "#contact" },
+  { id: "home", href: "#home" },
+  { id: "about", href: "#about" },
+  { id: "experience", href: "#experience" },
+  { id: "projects", href: "#projects" },
+  { id: "skills", href: "#skills" },
+  { id: "education", href: "#education" },
+  { id: "contact", href: "#contact" },
 ]
 
 const socialLinks = [
@@ -33,6 +34,7 @@ const socialLinks = [
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
+  const { t } = useTranslation()
 
   return (
     <footer className="border-t border-border/50 bg-card/50">
@@ -42,27 +44,26 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link href="#home" className="text-2xl font-bold text-foreground">
-              HF
+              {t("brand.title")}
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-              Software Developer passionate about building secure, scalable, and 
-              impactful technology solutions.
+              {t("brand.description")}
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
-              Quick Links
+              {t("footer.quickLinks")}
             </h3>
             <nav className="grid grid-cols-2 gap-2">
               {navLinks.map((link) => (
                 <Link
-                  key={link.name}
+                  key={link.id}
                   href={link.href}
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {link.name}
+                  {t(`nav.${link.id}`)}
                 </Link>
               ))}
             </nav>
@@ -71,7 +72,7 @@ export function Footer() {
           {/* Connect */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
-              Connect
+              {t("footer.connect")}
             </h3>
             <div className="flex gap-3">
               {socialLinks.map((link) => (
@@ -88,7 +89,7 @@ export function Footer() {
               ))}
             </div>
             <p className="text-sm text-muted-foreground">
-              hajerfguir@gmail.com
+              {t("footer.email") || "hajerfguir@gmail.com"}
             </p>
           </div>
         </div>
@@ -96,10 +97,10 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="py-6 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            &copy; {currentYear} Hajer Fguir. All rights reserved.
+            &copy; {currentYear} Hajer Fguir. {t("footer.rights")}
           </p>
           <p className="text-sm text-muted-foreground flex items-center gap-1">
-            Built with <Heart className="w-4 h-4 text-primary fill-primary" /> using Next.js & Tailwind CSS
+            {t("footer.builtWith")} <Heart className="w-4 h-4 text-primary fill-primary" /> {t("footer.using")}
           </p>
         </div>
       </div>

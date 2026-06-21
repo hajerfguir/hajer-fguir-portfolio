@@ -17,8 +17,10 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { SectionHeader } from "@/components/section-header"
+import { useTranslation } from "@/components/language-provider"
 
 export function ContactSection() {
+  const { t } = useTranslation()
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
@@ -75,9 +77,7 @@ export function ContactSection() {
       })
     } catch (error) {
       console.error(error)
-      setErrorMessage(
-        "Sorry, something went wrong. Please try again or email me directly."
-      )
+        setErrorMessage(t("contact.sendForm.error"))
     } finally {
       setIsLoading(false)
     }
@@ -102,9 +102,9 @@ export function ContactSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <SectionHeader
-          label="Get In Touch"
-          title="Let's Start a Conversation"
-          subtitle="Have a project in mind or want to discuss opportunities? I'd love to hear from you."
+          label={t("contact.label")}
+          title={t("contact.title")}
+          subtitle={t("contact.subtitle")}
           centered={true}
         />
 
@@ -122,7 +122,7 @@ export function ContactSection() {
 
                 <div className="flex-1 text-center">
                   <span className="text-sm font-medium text-foreground/80">
-                    New Message
+                    {t("contact.newMessage")}
                   </span>
                 </div>
 
@@ -133,28 +133,28 @@ export function ContactSection() {
               <div className="p-5 space-y-3 border-b border-border/30 bg-card">
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-muted-foreground w-14">
-                    To:
+                    {t("contact.to")}
                   </span>
                   <span className="text-sm font-medium text-foreground">
-                    hajerfguir@gmail.com
+                    {t("footer.email")}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-muted-foreground w-14">
-                    From:
+                    {t("contact.from")}
                   </span>
                   <span className="text-sm text-foreground/70 italic">
-                    {formData.email || "your@email.com"}
+                    {formData.email || t("contact.sendForm.emailPlaceholder")}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-muted-foreground w-14">
-                    Subject:
+                    {t("contact.subject")}
                   </span>
                   <span className="text-sm text-foreground/70 italic">
-                    {formData.subject || "New Collaboration Inquiry"}
+                    {formData.subject || t("contact.sendForm.subjectPlaceholder")}
                   </span>
                 </div>
               </div>
@@ -165,12 +165,12 @@ export function ContactSection() {
                   <p>
                     Hi, my name is{" "}
                     <span className="font-medium text-primary italic">
-                      {formData.name || "[your name]"}
+                      {formData.name || t("contact.sendForm.namePlaceholder")}
                     </span>
                     .
                   </p>
 
-                  <p>I&apos;m interested in working with you on a project.</p>
+                  <p>{t("contact.sendForm.helper")}</p>
 
                   <div className="min-h-[80px] py-2">
                     {formData.message ? (
@@ -193,17 +193,14 @@ export function ContactSection() {
 
               {/* Status Bar */}
               <div className="px-5 py-3 bg-secondary/30 dark:bg-secondary/20 border-t border-border/30 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                  <span className="text-xs text-muted-foreground">Draft</span>
-                </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                    <span className="text-xs text-muted-foreground">{t("contact.draft")}</span>
+                  </div>
 
-                <span className="text-xs text-muted-foreground">
-                  {formData.message.length > 0
-                    ? `${formData.message.length}`
-                    : "0"}{" "}
-                  characters
-                </span>
+                  <span className="text-xs text-muted-foreground">
+                    {formData.message.length > 0 ? `${formData.message.length}` : "0"} {t("contact.characters")}
+                  </span>
               </div>
             </div>
 
@@ -220,7 +217,7 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <p className="text-xs text-muted-foreground">LinkedIn</p>
+                  <p className="text-xs text-muted-foreground">{t("contact.linkedIn")}</p>
                   <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                     /hajer-fguir
                   </p>
@@ -238,7 +235,7 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <p className="text-xs text-muted-foreground">GitHub</p>
+                  <p className="text-xs text-muted-foreground">{t("contact.github")}</p>
                   <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                     /hajerfguir
                   </p>
@@ -254,9 +251,9 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <p className="text-xs text-muted-foreground">Email</p>
+                  <p className="text-xs text-muted-foreground">{t("contact.email")}</p>
                   <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                    hajerfguir@gmail.com
+                    {t("footer.email")}
                   </p>
                 </div>
               </Link>
@@ -267,7 +264,7 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <p className="text-xs text-muted-foreground">Location</p>
+                  <p className="text-xs text-muted-foreground">{t("contact.location")}</p>
                   <p className="text-sm font-medium text-foreground">
                     Ottawa, ON, Canada
                   </p>
@@ -290,11 +287,10 @@ export function ContactSection() {
 
                   <div className="space-y-2">
                     <h3 className="text-2xl font-semibold text-foreground">
-                      Message Sent!
+                      {t("contact.sendForm.sentTitle")}
                     </h3>
                     <p className="text-muted-foreground max-w-sm">
-                      Thank you for reaching out. I&apos;ll review your message
-                      and get back to you soon.
+                      {t("contact.sendForm.sentBody")}
                     </p>
                   </div>
 
@@ -312,18 +308,17 @@ export function ContactSection() {
                     }}
                     className="mt-4"
                   >
-                    Send Another Message
+                    {t("contact.sendForm.sendAnother")}
                   </Button>
                 </div>
               ) : (
                 <>
                   <div className="mb-8">
                     <h3 className="text-xl font-semibold text-foreground mb-2">
-                      Send Me a Message
+                      {t("contact.sendForm.title")}
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      Fill out the form and I&apos;ll get back to you within 24
-                      hours.
+                      {t("contact.sendForm.helper")}
                     </p>
                   </div>
 
@@ -331,14 +326,14 @@ export function ContactSection() {
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name" className="text-sm font-medium">
-                          Your Name <span className="text-primary">*</span>
+                          {t("contact.sendForm.name")} <span className="text-primary">*</span>
                         </Label>
 
                         <div className="relative">
                           <Input
                             id="name"
                             name="name"
-                            placeholder="John Doe"
+                            placeholder={t("contact.sendForm.namePlaceholder")}
                             required
                             value={formData.name}
                             onChange={handleInputChange}
@@ -350,7 +345,7 @@ export function ContactSection() {
 
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-sm font-medium">
-                          Email Address <span className="text-primary">*</span>
+                          {t("contact.sendForm.email")} <span className="text-primary">*</span>
                         </Label>
 
                         <div className="relative">
@@ -358,7 +353,7 @@ export function ContactSection() {
                             id="email"
                             name="email"
                             type="email"
-                            placeholder="john@example.com"
+                            placeholder={t("contact.sendForm.emailPlaceholder")}
                             required
                             value={formData.email}
                             onChange={handleInputChange}
@@ -371,12 +366,12 @@ export function ContactSection() {
 
                     <div className="space-y-2">
                       <Label htmlFor="subject" className="text-sm font-medium">
-                        Subject
+                        {t("contact.sendForm.subject")}
                       </Label>
                       <Input
                         id="subject"
                         name="subject"
-                        placeholder="Project Collaboration"
+                        placeholder={t("contact.sendForm.subjectPlaceholder")}
                         value={formData.subject}
                         onChange={handleInputChange}
                         className="bg-background/50 border-border/50 focus:border-primary/50 h-12"
@@ -385,13 +380,13 @@ export function ContactSection() {
 
                     <div className="space-y-2">
                       <Label htmlFor="message" className="text-sm font-medium">
-                        Tell Me About Your Project{" "}
+                        {t("contact.sendForm.messageLabel")} {" "}
                         <span className="text-primary">*</span>
                       </Label>
                       <Textarea
                         id="message"
                         name="message"
-                        placeholder="I'm looking for help with..."
+                        placeholder={t("contact.sendForm.messagePlaceholder")}
                         rows={5}
                         required
                         value={formData.message}
@@ -412,19 +407,19 @@ export function ContactSection() {
                       {isLoading ? (
                         <span className="flex items-center gap-2">
                           <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                          Sending...
+                          {t("contact.sendForm.sending")}
                         </span>
                       ) : (
                         <>
                           <Send className="w-4 h-4 mr-2" />
-                          Send Message
+                          {t("contact.sendForm.sendButton")}
                         </>
                       )}
                     </Button>
 
                     <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
                       <Clock className="w-3 h-3" />
-                      <span>I typically respond within 24–48 hours</span>
+                      <span>{t("contact.sendForm.respondTime")}</span>
                     </div>
                   </form>
                 </>

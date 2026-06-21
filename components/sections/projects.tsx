@@ -17,9 +17,11 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { SectionHeader } from "@/components/section-header"
+import { useTranslation } from "@/components/language-provider"
 
 const projects = [
   {
+    id: "drivesense",
     title: "DriveSense™",
     subtitle: "Capstone Project · LockedIn LTD",
     description:
@@ -45,6 +47,7 @@ const projects = [
     featured: true,
   },
   {
+    id: "smart_home",
     title: "Smart Home Automation System",
     subtitle: "Embedded Systems Project",
     description:
@@ -70,6 +73,7 @@ const projects = [
     featured: true,
   },
   {
+    id: "nutricoach",
     title: "AI-Powered NutriCoach Chatbot",
     subtitle: "AI Chatbot Project",
     description:
@@ -86,6 +90,7 @@ const projects = [
     featured: true,
   },
   {
+    id: "portfolio",
     title: "Personal Portfolio Website",
     subtitle: "Frontend Portfolio Project",
     description:
@@ -109,6 +114,7 @@ const projects = [
     featured: false,
   },
   {
+    id: "mglam",
     title: "M.Glam Beauty Salon Website",
     subtitle: "Web Development Project",
     description:
@@ -125,6 +131,7 @@ const projects = [
     featured: false,
   },
   {
+    id: "uart",
     title: "UART Communication System",
     subtitle: "Digital Systems Project",
     description:
@@ -141,6 +148,7 @@ const projects = [
     featured: false,
   },
   {
+    id: "mips",
     title: "MIPS Pipelined RISC Processor",
     subtitle: "VHDL / FPGA Design",
     description:
@@ -166,6 +174,11 @@ const projects = [
 ]
 
 export function ProjectsSection() {
+  const { t } = useTranslation()
+  const get = (key: string, fallback: any) => {
+    const val = t(key)
+    return typeof val === "string" && val === key ? fallback : val
+  }
   const [startIndex, setStartIndex] = useState(0)
   const [direction, setDirection] = useState<"next" | "previous">("next")
   const projectsPerPage = 3
@@ -190,9 +203,9 @@ export function ProjectsSection() {
     <section id="projects" className="py-24 sm:py-32 overflow-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          label="Projects"
-          title="Featured work"
-          subtitle="A selection of projects showcasing my work across AI, embedded systems, cybersecurity, software development, and automation."
+          label={t("projects.label")}
+          title={t("projects.title")}
+          subtitle={t("projects.subtitle")}
           centered={true}
         />
 
@@ -203,7 +216,7 @@ export function ProjectsSection() {
             size="icon"
             onClick={handlePrevious}
             className="absolute -left-10 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 rounded-full border border-primary/40 bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:bg-primary/90 hover:scale-110 lg:-left-16 md:flex"
-            aria-label="Previous projects"
+            aria-label={t("projects.previous")}
           >
             <ChevronLeft className="h-6 w-6" />
           </Button>
@@ -219,13 +232,13 @@ export function ProjectsSection() {
           >
             {visibleProjects.map((project) => (
               <div
-                key={project.title}
+                key={project.id || project.title}
                 className="group relative flex cursor-pointer flex-col p-6 rounded-xl bg-card border border-border/50 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2 hover:scale-[1.03] transition-all duration-300"
               >
                 {project.featured && (
                   <div className="absolute -top-3 -right-3">
                     <Badge className="bg-primary text-primary-foreground">
-                      Featured
+                      {t("projects.featured")}
                     </Badge>
                   </div>
                 )}
@@ -236,19 +249,18 @@ export function ProjectsSection() {
 
                 <div className="mb-3">
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {project.title}
+                    {get(`projects.items.${project.id}.title`, project.title)}
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    {project.subtitle}
+                    {get(`projects.items.${project.id}.subtitle`, project.subtitle)}
                   </p>
                 </div>
-
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-grow">
-                  {project.description}
+                  {get(`projects.items.${project.id}.description`, project.description)}
                 </p>
 
                 <ul className="space-y-1.5 mb-4">
-                  {project.highlights.map((highlight, i) => (
+                  {(get(`projects.items.${project.id}.highlights`, project.highlights) as string[]).map((highlight, i) => (
                     <li
                       key={i}
                       className="text-xs text-muted-foreground flex gap-2"
@@ -294,7 +306,7 @@ export function ProjectsSection() {
                         rel="noopener noreferrer"
                       >
                         <Github className="w-4 h-4 mr-2" />
-                        Code
+                        {t("projects.code")}
                       </Link>
                     </Button>
                   )}
@@ -324,7 +336,7 @@ export function ProjectsSection() {
                         rel="noopener noreferrer"
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Explore
+                        {t("projects.explore")}
                       </Link>
                     </Button>
                   )}
@@ -351,7 +363,7 @@ export function ProjectsSection() {
             size="icon"
             onClick={handleNext}
             className="absolute -right-10 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 rounded-full border border-primary/40 bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:bg-primary/90 hover:scale-110 lg:-right-16 md:flex"
-            aria-label="Next projects"
+            aria-label={t("projects.next")}
           >
             <ChevronRight className="h-6 w-6" />
           </Button>
@@ -388,7 +400,7 @@ export function ProjectsSection() {
               rel="noopener noreferrer"
             >
               <Github className="w-5 h-5 mr-2" />
-              View All Projects on GitHub
+              {t("projects.viewAll")}
             </Link>
           </Button>
         </div>

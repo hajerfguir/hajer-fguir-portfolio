@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Code, Layers, Cloud, Shield, Cpu } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { SectionHeader } from "@/components/section-header"
+import { useTranslation } from "@/components/language-provider"
 
 const skillCategories = [
   {
@@ -39,7 +40,13 @@ const skillCategories = [
 ]
 
 export function SkillsSection() {
+  const { t } = useTranslation()
   const [activeCategory, setActiveCategory] = useState(skillCategories[0].id)
+
+  const get = (key: string, fallback: any) => {
+    const val = t(key)
+    return typeof val === "string" && val === key ? fallback : val
+  }
 
   const activeSkills = skillCategories.find((cat) => cat.id === activeCategory)
 
@@ -48,9 +55,9 @@ export function SkillsSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <SectionHeader
-          label="Skills"
-          title="Technical expertise"
-          subtitle="A comprehensive toolkit spanning multiple domains of software engineering."
+          label={t("skills.label")}
+          title={t("skills.title")}
+          subtitle={t("skills.subtitle")}
           centered={true}
         />
 
@@ -68,7 +75,7 @@ export function SkillsSection() {
               )}
             >
               <category.icon className="w-4 h-4" />
-              <span className="hidden sm:inline">{category.name}</span>
+              <span className="hidden sm:inline">{get(`skills.categories.${category.id}`, category.name)}</span>
             </button>
           ))}
         </div>
@@ -93,13 +100,13 @@ export function SkillsSection() {
 
         {/* All Skills Overview */}
         <div className="mt-16 p-8 rounded-2xl bg-card border border-border/50">
-          <h3 className="text-lg font-semibold text-foreground mb-6">Complete Skill Set</h3>
+          <h3 className="text-lg font-semibold text-foreground mb-6">{t("skills.completeSet")}</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
             {skillCategories.map((category) => (
               <div key={category.id}>
                 <div className="flex items-center gap-2 mb-3">
                   <category.icon className="w-4 h-4 text-primary" />
-                  <h4 className="font-medium text-foreground text-sm">{category.name}</h4>
+                  <h4 className="font-medium text-foreground text-sm">{get(`skills.categories.${category.id}`, category.name)}</h4>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {category.skills.map((skill) => (

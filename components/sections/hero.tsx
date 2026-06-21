@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Github, Linkedin, Mail, ArrowDown } from "lucide-react"
+import { useTranslation } from "@/components/language-provider"
 import { Button } from "@/components/ui/button"
 import { StarfieldBackground } from "@/components/starfield-background"
 import { cn } from "@/lib/utils"
@@ -18,6 +19,7 @@ const heroImages = [
 
 export function HeroSection() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const { t } = useTranslation()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -46,15 +48,15 @@ export function HeroSection() {
           <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground animate-fade-in animation-delay-200 text-balance">
-                Hajer Fguir
+                {t("hero.name")}
               </h1>
               <p className="text-primary font-medium tracking-wide uppercase text-sm animate-fade-in">
-                Software Developer
+                {t("hero.role")}
               </p>
             </div>
 
             <p className="text-muted-foreground text-lg max-w-xl mx-auto lg:mx-0 animate-fade-in animation-delay-600 leading-relaxed text-pretty">
-              Building secure, scalable, and impactful technology. Passionate about creating reliable software solutions and exploring how cybersecurity, AI, and automation can improve the way systems are built and protected.
+              {t("hero.description")}
             </p>
 
             {/* CTA Buttons */}
@@ -64,7 +66,7 @@ export function HeroSection() {
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground"
               >
-                <Link href="#projects">View Projects</Link>
+                <Link href="#projects">{t("hero.cta.viewProjects")}</Link>
               </Button>
               <Button
                 asChild
@@ -72,7 +74,7 @@ export function HeroSection() {
                 size="lg"
                 className="border-border hover:bg-secondary"
               >
-                <Link href="#contact">Contact Me</Link>
+                <Link href="#contact">{t("hero.cta.contact")}</Link>
               </Button>
               <Button
                 asChild
@@ -85,7 +87,7 @@ export function HeroSection() {
                   rel="noopener noreferrer"
                 >
                   <Github className="mr-2 h-5 w-5" />
-                  GitHub
+                  {t("hero.cta.github")}
                 </Link>
               </Button>
             </div>
@@ -99,7 +101,7 @@ export function HeroSection() {
                 className="p-2 rounded-full bg-secondary/50 hover:bg-secondary text-muted-foreground hover:text-foreground transition-all"
               >
                 <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
+                <span className="sr-only">{t("contact.linkedIn") || "LinkedIn"}</span>
               </Link>
               <Link
                 href="https://github.com/hajerfguir"
@@ -108,14 +110,14 @@ export function HeroSection() {
                 className="p-2 rounded-full bg-secondary/50 hover:bg-secondary text-muted-foreground hover:text-foreground transition-all"
               >
                 <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
+                <span className="sr-only">{t("contact.github") || "GitHub"}</span>
               </Link>
               <Link
                 href="mailto:hajerfguir@gmail.com"
                 className="p-2 rounded-full bg-secondary/50 hover:bg-secondary text-muted-foreground hover:text-foreground transition-all"
               >
                 <Mail className="h-5 w-5" />
-                <span className="sr-only">Email</span>
+                <span className="sr-only">{t("contact.email") || "Email"}</span>
               </Link>
             </div>
           </div>
@@ -165,12 +167,12 @@ export function HeroSection() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden lg:block">
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden lg:block">
           <Link
             href="#about"
             className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
-            <span className="text-xs uppercase tracking-widest">Scroll</span>
+            <span className="text-xs uppercase tracking-widest">{t("hero.scroll")}</span>
             <ArrowDown className="h-4 w-4" />
           </Link>
         </div>

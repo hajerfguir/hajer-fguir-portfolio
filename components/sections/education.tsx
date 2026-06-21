@@ -3,6 +3,7 @@
 import { GraduationCap, Award, BookOpen, Calendar } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { SectionHeader } from "@/components/section-header"
+import { useTranslation } from "@/components/language-provider"
 
 const certifications = [
   {
@@ -40,13 +41,14 @@ const relevantCourses = [
 ]
 
 export function EducationSection() {
+  const { t } = useTranslation()
   return (
     <section id="education" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <SectionHeader
-          label="Education"
-          title="Academic background"
+          label={t("education.label")}
+          title={t("education.title")}
           centered={true}
         />
 
@@ -83,7 +85,7 @@ export function EducationSection() {
               <div className="space-y-3 mb-6">
                 <h4 className="text-sm font-semibold text-foreground flex items-center gap-2">
                   <Award className="w-4 h-4 text-primary" />
-                  Scholarships & Awards
+                  {t("education.scholarships")}
                 </h4>
 
                 <div className="flex flex-wrap gap-2">
@@ -103,7 +105,7 @@ export function EducationSection() {
               <div>
                 <h4 className="text-sm font-semibold text-foreground flex items-center gap-2 mb-3">
                   <BookOpen className="w-4 h-4 text-primary" />
-                  Relevant Coursework
+                  {t("education.relevantCoursework")}
                 </h4>
 
                 <div className="flex flex-wrap gap-1.5">
@@ -170,9 +172,7 @@ export function EducationSection() {
             {/* Additional Info Card */}
             <div className="p-6 rounded-xl bg-primary/5 border border-primary/10">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Continuously expanding my knowledge through online learning in
-                artificial intelligence, machine learning, data engineering,
-                version control, and modern development practices.
+                {t("education.moreInfo")}
               </p>
             </div>
           </div>

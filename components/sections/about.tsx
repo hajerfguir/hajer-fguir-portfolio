@@ -2,38 +2,40 @@
 
 import { Shield, Code, Cloud, Cpu } from "lucide-react"
 import { SectionHeader } from "@/components/section-header"
+import { useTranslation } from "@/components/language-provider"
 
 const highlights = [
   {
+    id: "cybersecurity",
     icon: Shield,
-    title: "Cybersecurity",
     description: "Exploring secure development, SSDLC practices, authentication, and application security.",
   },
   {
+    id: "software",
     icon: Code,
-    title: "Software Development",
     description: "Building reliable applications with React, Node.js, .NET, Python, and modern web technologies.",
   },
   {
+    id: "devops",
     icon: Cloud,
-    title: "DevOps & Automation",
     description: "Working with CI/CD, Docker, API testing, automation, and modern development workflows.",
   },
   {
+    id: "ai",
     icon: Cpu,
-    title: "AI & Machine Learning",
     description: "Exploring AI-powered solutions using OpenAI, PyTorch, OpenCV, and intelligent automation.",
   },
 ]
 
 export function AboutSection() {
+  const { t } = useTranslation()
   return (
     <section id="about" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <SectionHeader
-          label="About Me"
-          title="Where secure engineering meets purposeful innovation"
+          label={t("about.label")}
+          title={t("about.title")}
           centered={true}
         />
 
@@ -41,36 +43,28 @@ export function AboutSection() {
           {/* Left - Bio */}
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-              Welcome to my digital space. I&apos;m Hajer Fguir, a Computer Engineering graduate and Software
-              Developer at the University of Ottawa. I&apos;m passionate about
-              building technology that is not only functional, but secure,
-              thoughtful, and meaningful.
+              {t("about.bio1")}
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-              My journey has taken me through government, private industry,
-              university IT, entrepreneurship, and teaching. Along the way,
-              I&apos;ve learned to embrace complexity, ask better questions, and
-              turn ideas into solutions that create real value. I&apos;m especially inspired by the intersection
-              of cybersecurity, AI, and automation, and by the people and
-              communities that make technology more impactful.
+              {t("about.bio2")}
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-border">
               <div className="text-center">
                 <p className="text-3xl font-bold text-primary">3+</p>
-                <p className="text-sm text-muted-foreground">Years Experience</p>
+                <p className="text-sm text-muted-foreground">{t("about.stats.years")}</p>
               </div>
 
               <div className="text-center">
                 <p className="text-3xl font-bold text-primary">10+</p>
-                <p className="text-sm text-muted-foreground">Projects</p>
+                <p className="text-sm text-muted-foreground">{t("about.stats.projects")}</p>
               </div>
 
               <div className="text-center">
                 <p className="text-3xl font-bold text-primary">5+</p>
-                <p className="text-sm text-muted-foreground">Organizations</p>
+                <p className="text-sm text-muted-foreground">{t("about.stats.orgs")}</p>
               </div>
             </div>
           </div>
@@ -79,7 +73,7 @@ export function AboutSection() {
           <div className="grid sm:grid-cols-2 gap-4">
             {highlights.map((item, index) => (
               <div
-                key={item.title}
+                key={item.id}
                 className="group p-6 rounded-xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
@@ -88,7 +82,7 @@ export function AboutSection() {
                 </div>
 
                 <h3 className="font-semibold text-foreground mb-2">
-                  {item.title}
+                  {t(`about.highlights.${item.id}`)}
                 </h3>
 
                 <p className="text-sm text-muted-foreground leading-relaxed">

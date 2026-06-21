@@ -5,16 +5,17 @@ import Link from "next/link"
 import { useTheme } from "next-themes"
 import { Menu, X, Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useTranslation } from "@/components/language-provider"
 import { cn } from "@/lib/utils"
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Education", href: "#education" },
-  { name: "Contact", href: "#contact" },
+  { id: "home", href: "#home" },
+  { id: "about", href: "#about" },
+  { id: "experience", href: "#experience" },
+  { id: "projects", href: "#projects" },
+  { id: "skills", href: "#skills" },
+  { id: "education", href: "#education" },
+  { id: "contact", href: "#contact" },
 ]
 
 export function Navbar() {
@@ -31,6 +32,8 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const { t, locale, setLocale } = useTranslation()
 
   return (
     <header
@@ -55,11 +58,11 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <Link
-                key={item.name}
+                key={item.id}
                 href={item.href}
                 className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary/50"
               >
-                {item.name}
+                {t(`nav.${item.id}`)}
               </Link>
             ))}
           </div>
@@ -85,13 +88,24 @@ export function Navbar() {
               <span className="sr-only">Toggle theme</span>
             </Button>
 
+            {/* Language Toggle */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setLocale(locale === "en" ? "fr" : "en")}
+              className="rounded-full"
+            >
+              {locale === "en" ? "FR" : "EN"}
+              <span className="sr-only">Toggle language</span>
+            </Button>
+
             {/* CTA Button */}
             <Button
               asChild
               size="sm"
               className="hidden sm:flex bg-primary hover:bg-primary/90 text-primary-foreground"
             >
-              <Link href="#contact">Contact Me</Link>
+              <Link href="#contact">{t("cta.contact")}</Link>
             </Button>
 
             {/* Mobile Menu Button */}
@@ -117,12 +131,12 @@ export function Navbar() {
             <div className="px-4 py-4 space-y-1">
               {navItems.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.id}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-lg transition-colors"
                 >
-                  {item.name}
+                  {t(`nav.${item.id}`)}
                 </Link>
               ))}
               <div className="pt-2">
@@ -131,7 +145,7 @@ export function Navbar() {
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
                   <Link href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
-                    Contact Me
+                    {t("cta.contact")}
                   </Link>
                 </Button>
               </div>
