@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { MessageCircle, X, Send, Bot } from "lucide-react"
+import { useTranslation } from "./language-provider"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
@@ -11,8 +12,9 @@ type Message = {
   content: string
 }
 
-const INTENTS: { keywords: string[]; answer: string }[] = [
+const INTENTS: { id: string; keywords: string[]; answer: string }[] = [
   {
+    id: "experience",
     keywords: [
       "experience",
       "background",
@@ -29,6 +31,7 @@ const INTENTS: { keywords: string[]; answer: string }[] = [
       "Hajer is a Computer Engineering graduate and Software Developer with 3+ years of hands-on experience across 5+ organizations. Her journey includes university IT, private industry, entrepreneurship, government-related work, performance/data analysis, teaching, QA, API testing, and secure software development. She currently works at the University of Ottawa IT, where she contributes to software development, API testing, QA, performance testing, and SSDLC/security-related initiatives.",
   },
   {
+    id: "security",
     keywords: [
       "cyber",
       "cybersecurity",
@@ -47,6 +50,7 @@ const INTENTS: { keywords: string[]; answer: string }[] = [
       "Cybersecurity is one of Hajer's main areas of interest. She works with secure development practices, SSDLC activities, API security considerations, authentication and authorization testing, SSO/SAML concepts, and security-aware QA. She is especially interested in building systems that are not only functional, but secure, thoughtful, and reliable.",
   },
   {
+    id: "skills",
     keywords: [
       "skill",
       "tech",
@@ -63,6 +67,7 @@ const INTENTS: { keywords: string[]; answer: string }[] = [
       "Hajer's technical skills include:\n• Languages: Python, Java, JavaScript, TypeScript, C/C++, SQL\n• Web & Software: React, Next.js, Node.js, .NET, REST APIs\n• QA & Testing: Postman, JMeter, API testing, performance testing, regression testing\n• DevOps: Git, GitHub, GitLab, CI/CD, Docker, Linux\n• Security: SSDLC, API security, authentication, authorization, SSO/SAML concepts\n• AI/ML: OpenAI, PyTorch, OpenCV, intelligent automation",
   },
   {
+    id: "projects",
     keywords: [
       "project",
       "portfolio",
@@ -79,6 +84,7 @@ const INTENTS: { keywords: string[]; answer: string }[] = [
       "Hajer has worked on 10+ projects across software development, cybersecurity, AI, automation, and web technologies. Some highlighted projects include:\n• DriveSense — a driver drowsiness detection system using PyTorch, OpenCV, and React/TypeScript.\n• AI-Powered NutriCoach — a chatbot experience using AI to support nutrition guidance.\n• Smart Home Automation — an IoT-based automation project using ESP32 and web technologies.\n• Personal Portfolio Website — a modern portfolio built with Next.js, TypeScript, Tailwind CSS, GitHub, and Vercel.",
   },
   {
+    id: "contact",
     keywords: [
       "contact",
       "email",
@@ -95,6 +101,7 @@ const INTENTS: { keywords: string[]; answer: string }[] = [
       "You can reach Hajer through her portfolio contact form, email her at hajerfguir@gmail.com, connect with her on LinkedIn at linkedin.com/in/hajer-fguir, or view her work on GitHub at github.com/hajerfguir.",
   },
   {
+    id: "education",
     keywords: [
       "education",
       "degree",
@@ -113,6 +120,7 @@ const INTENTS: { keywords: string[]; answer: string }[] = [
       "Hajer holds a BASc in Computer Engineering from the University of Ottawa. Her academic background includes cybersecurity, artificial intelligence, data structures and algorithms, operating systems, embedded systems, computer architecture, and software engineering.",
   },
   {
+    id: "availability",
     keywords: [
       "available",
       "availability",
@@ -129,6 +137,7 @@ const INTENTS: { keywords: string[]; answer: string }[] = [
       "Hajer is open to meaningful opportunities in software development, cybersecurity, QA automation, API testing, AI, and secure software engineering. The best way to reach her is through the contact form on this portfolio or by email at hajerfguir@gmail.com.",
   },
   {
+    id: "ai",
     keywords: [
       "ai",
       "machine learning",
@@ -144,6 +153,7 @@ const INTENTS: { keywords: string[]; answer: string }[] = [
       "Hajer is interested in the intersection of AI, automation, and secure software. Her experience includes AI-powered projects, PyTorch/OpenCV work, chatbot-style applications, and exploring how AI can improve development, testing, and user experiences.",
   },
   {
+    id: "devops",
     keywords: [
       "devops",
       "ci/cd",
@@ -161,6 +171,7 @@ const INTENTS: { keywords: string[]; answer: string }[] = [
       "Hajer has experience with DevOps and automation concepts, including Git, GitHub, GitLab, CI/CD workflows, Docker, Linux, deployment practices, and testing automation. She is especially interested in how DevOps and SSDLC practices can make software delivery more secure and reliable.",
   },
   {
+    id: "about",
     keywords: [
       "about",
       "who is",
@@ -174,6 +185,7 @@ const INTENTS: { keywords: string[]; answer: string }[] = [
       "Hajer Fguir is a Software Developer and Computer Engineering graduate passionate about cybersecurity, AI, automation, and community-driven impact. She enjoys turning ideas into secure, scalable, and intelligent digital experiences.",
   },
   {
+    id: "community",
     keywords: [
       "community",
       "volunteer",
@@ -188,6 +200,7 @@ const INTENTS: { keywords: string[]; answer: string }[] = [
       "Community involvement is an important part of Hajer's journey. Her experience spans 5+ organizations and includes teaching, mentoring, entrepreneurship, university IT, and building technology with real-world impact. She values work that supports people, communities, and meaningful innovation.",
   },
   {
+    id: "certification",
     keywords: [
       "certification",
       "certificate",
@@ -224,44 +237,7 @@ const quickQuestions = [
   "How can I contact her?",
 ]
 
-function getResponse(rawInput: string): string {
-  const input = rawInput.toLowerCase().trim()
-
-  if (
-    GREETINGS.some(
-      (g) =>
-        input === g ||
-        input.startsWith(g + " ") ||
-        input.startsWith(g + "!")
-    )
-  ) {
-    return "Hello! I'm Hajer's AI Portfolio Assistant. You can ask me about her experience, technical skills, cybersecurity work, projects, education, community involvement, or how to get in touch."
-  }
-
-  if (THANKS.some((t) => input.includes(t))) {
-    return "You're welcome! Feel free to ask anything else about Hajer's background, skills, projects, cybersecurity work, community involvement, or how to contact her."
-  }
-
-  let best: { score: number; answer: string } | null = null
-
-  for (const intent of INTENTS) {
-    let score = 0
-
-    for (const kw of intent.keywords) {
-      if (input.includes(kw)) {
-        score += kw.includes(" ") ? 2 : 1
-      }
-    }
-
-    if (score > 0 && (!best || score > best.score)) {
-      best = { score, answer: intent.answer }
-    }
-  }
-
-  if (best) return best.answer
-
-  return "I'm Hajer's AI Portfolio Assistant, so I can help with questions about her professional background. Try asking about her experience, technical skills, cybersecurity work, projects, education, community involvement, or how to contact her."
-}
+// getResponse will be defined inside the component so it can access translations
 
 function hasCookieConsentAccepted() {
   if (typeof window === "undefined") return false
@@ -301,16 +277,56 @@ function hasCookieConsentAccepted() {
 export function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false)
   const [showIntro, setShowIntro] = useState(false)
+  const { t } = useTranslation()
+
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content:
-        "Hi! I'm Hajer's AI Portfolio Assistant. Ask me about her experience, skills, cybersecurity work, projects, education, community involvement, or how to reach her.",
+      content: t("ai.initialMessage"),
     },
   ])
   const [input, setInput] = useState("")
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  const getResponse = (rawInput: string): string => {
+    const input = rawInput.toLowerCase().trim()
+
+    if (
+      GREETINGS.some(
+        (g) => input === g || input.startsWith(g + " ") || input.startsWith(g + "!")
+      )
+    ) {
+      return t("ai.greetingResponse")
+    }
+
+    if (THANKS.some((th) => input.includes(th))) {
+      return t("ai.thanksResponse")
+    }
+
+    let best: { score: number; intentId?: string; answer?: string } | null = null
+
+    for (const intent of INTENTS) {
+      let score = 0
+
+      for (const kw of intent.keywords) {
+        if (input.includes(kw)) {
+          score += kw.includes(" ") ? 2 : 1
+        }
+      }
+
+      if (score > 0 && (!best || score > best.score)) {
+        best = { score, intentId: (intent as any).id, answer: intent.answer }
+      }
+    }
+
+    if (best && best.intentId) {
+      const translated = t(`ai.intents.${best.intentId}.answer`)
+      return typeof translated === "string" && translated !== `ai.intents.${best.intentId}.answer` ? translated : (best.answer || t("ai.intents.about.answer"))
+    }
+
+    return t("ai.initialMessage")
+  }
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -386,21 +402,15 @@ export function AIAssistant() {
               </div>
 
               <div>
-                <h3 className="font-semibold text-foreground">
-                  AI Portfolio Assistant
-                </h3>
+                <h3 className="font-semibold text-foreground">{t("ai.introTitle")}</h3>
 
-                <p className="text-sm text-muted-foreground mt-1">
-                  Hi! I can answer questions about Hajer&apos;s experience,
-                  projects, technical skills, cybersecurity work, community
-                  involvement, and contact details.
-                </p>
+                <p className="text-sm text-muted-foreground mt-1">{t("ai.introBody")}</p>
 
                 <button
                   onClick={openAssistant}
                   className="mt-3 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm hover:bg-primary/90 transition-colors"
                 >
-                  Ask me anything
+                  {t("ai.askButton")}
                 </button>
               </div>
             </div>
@@ -437,12 +447,8 @@ export function AIAssistant() {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-foreground">
-                    AI Portfolio Assistant
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Ask me about Hajer&apos;s work
-                  </p>
+                    <h3 className="font-semibold text-foreground">{t("ai.introTitle")}</h3>
+                    <p className="text-xs text-muted-foreground">{t("ai.askButton")}</p>
                 </div>
               </div>
             </div>
@@ -486,11 +492,9 @@ export function AIAssistant() {
 
             {messages.length === 1 && !isTyping && (
               <div className="px-4 pb-2">
-                <p className="text-xs text-muted-foreground mb-2">
-                  Try asking:
-                </p>
+                <p className="text-xs text-muted-foreground mb-2">{t("ai.tryAsking")}</p>
                 <div className="flex flex-wrap gap-1.5">
-                  {quickQuestions.map((q, i) => (
+                  {t("ai.quickQuestions").map((q: string, i: number) => (
                     <button
                       key={i}
                       onClick={() => sendQuestion(q)}
@@ -514,7 +518,7 @@ export function AIAssistant() {
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask about Hajer's background..."
+                  placeholder={t("ai.placeholder")}
                   className="flex-1 bg-background text-sm"
                 />
                 <Button

@@ -7,7 +7,7 @@ type Locale = "en" | "fr"
 interface LanguageContextValue {
   locale: Locale
   setLocale: (l: Locale) => void
-  t: (key: string) => string
+  t: (key: string) => any
 }
 
 const translations: Record<Locale, any> = {
@@ -73,6 +73,80 @@ const translations: Record<Locale, any> = {
       label: "Experience",
       title: "My professional journey",
       subtitle: "Building expertise through diverse roles and impactful projects",
+      items: {
+        uottawa_it: {
+          role: "Software Developer",
+          type: "Full-time",
+          period: "Jan 2026 – Present",
+          location: "Ottawa, ON, Canada",
+          description: [
+            "Implementing functional, regression, load, end-to-end and security tests for university platforms including uoZone and Experiential Learning",
+            "Developing authentication and security test scenarios for SAML2/SSO flows, including session handling, token validation and high-load authentication scenarios",
+            "Supporting SSDLC initiatives by improving secure testing practices, validating security requirements and contributing to QA documentation",
+            "Collaborating with developers, QA analysts and stakeholders to resolve issues, validate system behaviour and improve application reliability",
+          ],
+        },
+        uottawa: {
+          role: "IT Systems Developer",
+          type: "Intern",
+          period: "May 2025 – Dec 2025",
+          location: "Ottawa, ON, Canada",
+          description: [
+            "Executing load tests and API validation for the Experiential Learning platform",
+            "Developing automation scripts and JSON output validations to support data integrity and reliable backend integrations",
+            "Building and maintaining RESTful APIs using JavaScript, Node.js, Docker, Redis and CI/CD workflows",
+            "Performing end-to-end validations and performance testing to support high-volume user traffic and ensure system reliability",
+          ],
+        },
+        uottawa_faculty: {
+          role: "Teaching Assistant",
+          type: "Part-time",
+          period: "Jan 2025 – Dec 2025",
+          location: "Ottawa, ON, Canada",
+          description: [
+            "Supporting undergraduate students in ITI1520 and SEG2911 through labs, feedback and academic mentoring",
+            "Grading assignments and providing detailed feedback to help students improve technical and problem-solving skills",
+            "Running lab sessions and offering one-on-one programming support in Python, software engineering concepts and foundational computing topics",
+            "Strengthening communication, mentorship and leadership skills while working with diverse student backgrounds",
+          ],
+        },
+        novasoft: {
+          role: "Co-founder & Software Developer",
+          type: "Entrepreneurship",
+          period: "Dec 2024 – Dec 2025",
+          location: "Laval, QC, Canada",
+          description: [
+            "Co-founded a tech startup focused on building software solutions and exploring digital product ideas",
+            "Developed secure data processing and validation tools in Python and AVL Concerto",
+            "Defined technical requirements and contributed to full-stack development applying secure coding practices",
+            "Worked across product and technical responsibilities, improving autonomy, adaptability and problem-solving",
+          ],
+        },
+        dana_tm4: {
+          role: "V&V Project Management Intern",
+          type: "Intern",
+          period: "Sep 2024 – Dec 2024",
+          location: "Boucherville, QC, Canada",
+          description: [
+            "Supported verification and validation activities by contributing to internal tools, automation workflows and data-focused reports",
+            "Built Python solutions to support verification processes and improve access to test-related information",
+            "Created internal web tools in JavaScript to standardize database outputs and improve technical visibility",
+            "Contributed to secure data flows and authentication integrations including SAML2 SSO with Microsoft Azure AD",
+          ],
+        },
+        canada_post: {
+          role: "Performance Data Analyst Intern",
+          type: "Intern",
+          period: "Jan 2024 – Apr 2024",
+          location: "Ottawa, ON, Canada",
+          description: [
+            "Built automation scripts in Python and data analysis workflows to support operational performance monitoring",
+            "Worked with Power BI and internal databases to transform technical and operational data into useful insights",
+            "Supported KPI analysis, reporting improvements and data-driven decision making in an enterprise environment",
+            "Gained experience collaborating with business stakeholders, technical systems and large-scale data",
+          ],
+        },
+      },
     },
     projects: {
       label: "Projects",
@@ -89,7 +163,8 @@ const translations: Record<Locale, any> = {
         drivesense: {
           title: "DriveSense™",
           subtitle: "Capstone Project · LockedIn LTD",
-          description: "An intelligent driver alert system designed to monitor driver attentiveness in real time using sensors, computer vision, and machine-learning-based detection.",
+          description:
+            "An intelligent driver alert system designed to monitor driver attentiveness in real time using sensors, computer vision, and machine-learning-based detection.",
           highlights: [
             "Detects signs of drowsiness, fatigue, or distress",
             "Provides real-time driver alerts for unsafe behavior",
@@ -99,7 +174,8 @@ const translations: Record<Locale, any> = {
         smart_home: {
           title: "Smart Home Automation System",
           subtitle: "Embedded Systems Project",
-          description: "A real-time smart home automation system that enables touchless control of lights, fans, and temperature using hand gestures and a locally hosted web interface.",
+          description:
+            "A real-time smart home automation system that enables touchless control of lights, fans, and temperature using hand gestures and a locally hosted web interface.",
           highlights: [
             "Gesture-based control using APDS-9960 sensor",
             "Real-time sensor processing with ESP32 and FreeRTOS",
@@ -109,7 +185,8 @@ const translations: Record<Locale, any> = {
         nutricoach: {
           title: "AI-Powered NutriCoach Chatbot",
           subtitle: "AI Chatbot Project",
-          description: "An AI-powered chatbot that provides personalized nutrition guidance based on user goals and input through an interactive Gradio interface.",
+          description:
+            "An AI-powered chatbot that provides personalized nutrition guidance based on user goals and input through an interactive Gradio interface.",
           highlights: [
             "Personalized nutrition recommendations based on user input",
             "User-friendly interface hosted on Hugging Face Spaces",
@@ -119,7 +196,8 @@ const translations: Record<Locale, any> = {
         portfolio: {
           title: "Personal Portfolio Website",
           subtitle: "Frontend Portfolio Project",
-          description: "A modern personal portfolio website designed to showcase my background, experience, projects, skills, and professional journey in a clean and interactive way.",
+          description:
+            "A modern personal portfolio website designed to showcase my background, experience, projects, skills, and professional journey in a clean and interactive way.",
           highlights: [
             "Built with a responsive and professional user interface",
             "Includes interactive project navigation and smooth animations",
@@ -129,7 +207,8 @@ const translations: Record<Locale, any> = {
         mglam: {
           title: "M.Glam Beauty Salon Website",
           subtitle: "Web Development Project",
-          description: "A modern beauty salon website designed to showcase services, support appointment booking, and provide a clean and elegant user experience.",
+          description:
+            "A modern beauty salon website designed to showcase services, support appointment booking, and provide a clean and elegant user experience.",
           highlights: [
             "Responsive and elegant salon website interface",
             "Service showcase and appointment-focused design",
@@ -139,7 +218,8 @@ const translations: Record<Locale, any> = {
         uart: {
           title: "UART Communication System",
           subtitle: "Digital Systems Project",
-          description: "A UART communication system designed in VHDL with transmitter, receiver, and programmable baud rate generator for serial communication.",
+          description:
+            "A UART communication system designed in VHDL with transmitter, receiver, and programmable baud rate generator for serial communication.",
           highlights: [
             "Designed transmitter, receiver, and baud rate generator",
             "Performed loopback testing with MAX232",
@@ -149,7 +229,8 @@ const translations: Record<Locale, any> = {
         mips: {
           title: "MIPS Pipelined RISC Processor",
           subtitle: "VHDL / FPGA Design",
-          description: "A 5-stage pipelined RISC processor designed in VHDL, integrating control and datapaths with pipeline registers on an Altera DE2 FPGA.",
+          description:
+            "A 5-stage pipelined RISC processor designed in VHDL, integrating control and datapaths with pipeline registers on an Altera DE2 FPGA.",
           highlights: [
             "Implemented IF, ID, EX, MEM, and WB pipeline stages",
             "Designed hazard detection and data forwarding units",
@@ -163,13 +244,13 @@ const translations: Record<Locale, any> = {
       title: "Technical expertise",
       subtitle: "A comprehensive toolkit spanning multiple domains of software engineering.",
       completeSet: "Complete Skill Set",
-        categories: {
-          languages: "Languages",
-          frameworks: "Frameworks & Libraries",
-          cloud: "Cloud & DevOps",
-          security: "Security & Testing",
-          embedded: "Embedded Systems",
-        },
+      categories: {
+        languages: "Languages",
+        frameworks: "Frameworks & Libraries",
+        cloud: "Cloud & DevOps",
+        security: "Security & Testing",
+        embedded: "Embedded Systems",
+      },
     },
     education: {
       label: "Education",
@@ -216,6 +297,77 @@ const translations: Record<Locale, any> = {
         sendAnother: "Send Another Message",
         respondTime: "I typically respond within 24–48 hours",
         error: "Sorry, something went wrong. Please try again or email me directly.",
+      },
+    },
+    ai: {
+      initialMessage:
+        "Hi! I'm Hajer's AI Portfolio Assistant. Ask me about her experience, skills, cybersecurity work, projects, education, community involvement, or how to reach her.",
+      introTitle: "AI Portfolio Assistant",
+      introBody:
+        "Hi! I can answer questions about Hajer's experience, projects, technical skills, cybersecurity work, community involvement, and contact details.",
+      askButton: "Ask me anything",
+      placeholder: "Ask about Hajer's background...",
+      tryAsking: "Try asking:",
+      quickQuestions: [
+        "What is Hajer's experience?",
+        "What are her technical skills?",
+        "What cybersecurity experience does she have?",
+        "What projects has she worked on?",
+        "How can I contact her?",
+      ],
+      greetingResponse:
+        "Hello! I'm Hajer's AI Portfolio Assistant. You can ask me about her experience, technical skills, cybersecurity work, projects, education, community involvement, or how to get in touch.",
+      thanksResponse:
+        "You're welcome! Feel free to ask anything else about Hajer's background, skills, projects, cybersecurity work, community involvement, or how to contact her.",
+      intents: {
+        experience: {
+          answer:
+            "Hajer is a Computer Engineering graduate and Software Developer with 3+ years of hands-on experience across 5+ organizations. Her journey includes university IT, private industry, entrepreneurship, government-related work, performance/data analysis, teaching, QA, API testing, and secure software development. She currently works at the University of Ottawa IT, where she contributes to software development, API testing, QA, performance testing, and SSDLC/security-related initiatives.",
+        },
+        security: {
+          answer:
+            "Cybersecurity is one of Hajer's main areas of interest. She works with secure development practices, SSDLC activities, API security considerations, authentication and authorization testing, SSO/SAML concepts, and security-aware QA. She is especially interested in building systems that are not only functional, but secure, thoughtful, and reliable.",
+        },
+        skills: {
+          answer:
+            "Hajer's technical skills include:\n• Languages: Python, Java, JavaScript, TypeScript, C/C++, SQL\n• Web & Software: React, Next.js, Node.js, .NET, REST APIs\n• QA & Testing: Postman, JMeter, API testing, performance testing, regression testing\n• DevOps: Git, GitHub, GitLab, CI/CD, Docker, Linux\n• Security: SSDLC, API security, authentication, authorization, SSO/SAML concepts\n• AI/ML: OpenAI, PyTorch, OpenCV, intelligent automation",
+        },
+        projects: {
+          answer:
+            "Hajer has worked on 10+ projects across software development, cybersecurity, AI, automation, and web technologies. Some highlighted projects include:\n• DriveSense — a driver drowsiness detection system using PyTorch, OpenCV, and React/TypeScript.\n• AI-Powered NutriCoach — a chatbot experience using AI to support nutrition guidance.\n• Smart Home Automation — an IoT-based automation project using ESP32 and web technologies.\n• Personal Portfolio Website — a modern portfolio built with Next.js, TypeScript, Tailwind CSS, GitHub, and Vercel.",
+        },
+        contact: {
+          answer:
+            "You can reach Hajer through her portfolio contact form, email her at hajerfguir@gmail.com, connect with her on LinkedIn at linkedin.com/in/hajer-fguir, or view her work on GitHub at github.com/hajerfguir.",
+        },
+        education: {
+          answer:
+            "Hajer holds a BASc in Computer Engineering from the University of Ottawa. Her academic background includes cybersecurity, artificial intelligence, data structures and algorithms, operating systems, embedded systems, computer architecture, and software engineering.",
+        },
+        availability: {
+          answer:
+            "Hajer is open to meaningful opportunities in software development, cybersecurity, QA automation, API testing, AI, and secure software engineering. The best way to reach her is through the contact form on this portfolio or by email at hajerfguir@gmail.com.",
+        },
+        ai: {
+          answer:
+            "Hajer is interested in the intersection of AI, automation, and secure software. Her experience includes AI-powered projects, PyTorch/OpenCV work, chatbot-style applications, and exploring how AI can improve development, testing, and user experiences.",
+        },
+        devops: {
+          answer:
+            "Hajer has experience with DevOps and automation concepts, including Git, GitHub, GitLab, CI/CD workflows, Docker, Linux, deployment practices, and testing automation. She is especially interested in how DevOps and SSDLC practices can make software delivery more secure and reliable.",
+        },
+        about: {
+          answer:
+            "Hajer Fguir is a Software Developer and Computer Engineering graduate passionate about cybersecurity, AI, automation, and community-driven impact. She enjoys turning ideas into secure, scalable, and intelligent digital experiences.",
+        },
+        community: {
+          answer:
+            "Community involvement is an important part of Hajer's journey. Her experience spans 5+ organizations and includes teaching, mentoring, entrepreneurship, university IT, and building technology with real-world impact. She values work that supports people, communities, and meaningful innovation.",
+        },
+        certification: {
+          answer:
+            "Hajer has academic recognition and technical certifications related to software development, AI, machine learning, Git/GitHub, and front-end development. She is continuously learning and expanding her skills in cybersecurity, AI, and secure software engineering.",
+        },
       },
     },
   },
@@ -498,6 +650,77 @@ const translations: Record<Locale, any> = {
         sendAnother: "Envoyer un autre message",
         respondTime: "Je réponds généralement sous 24 à 48 heures",
         error: "Désolé, une erreur est survenue. Veuillez réessayer ou m'envoyer un e-mail directement.",
+      },
+    },
+    ai: {
+      initialMessage:
+        "Salut ! Je suis l'assistante IA du portfolio de Hajer. Demandez-moi des informations sur son expérience, ses compétences, son travail en cybersécurité, ses projets, sa formation, son implication communautaire ou comment la contacter.",
+      introTitle: "Assistant IA Portfolio",
+      introBody:
+        "Bonjour ! Je peux répondre aux questions sur l'expérience de Hajer, ses projets, ses compétences techniques, son travail en cybersécurité, son implication communautaire et ses coordonnées.",
+      askButton: "Posez-moi une question",
+      placeholder: "Demandez le parcours de Hajer...",
+      tryAsking: "Essayez de demander :",
+      quickQuestions: [
+        "Quelle est l'expérience de Hajer ?",
+        "Quelles sont ses compétences techniques ?",
+        "Quelle expérience en cybersécurité a-t-elle ?",
+        "Sur quels projets a-t-elle travaillé ?",
+        "Comment puis-je la contacter ?",
+      ],
+      greetingResponse:
+        "Bonjour ! Je suis l'assistante IA du portfolio de Hajer. Vous pouvez me poser des questions sur son expérience, ses compétences techniques, son travail en cybersécurité, ses projets, sa formation, son implication communautaire ou comment la contacter.",
+      thanksResponse:
+        "De rien ! N'hésitez pas à poser d'autres questions sur le parcours, les compétences, les projets, la cybersécurité ou comment contacter Hajer.",
+      intents: {
+        experience: {
+          answer:
+            "Hajer est diplômée en génie informatique et développeuse logiciel avec plus de 3 ans d'expérience pratique au sein de plus de 5 organisations. Son parcours inclut l'informatique universitaire, l'industrie privée, l'entrepreneuriat, des travaux liés au gouvernement, l'analyse de performance/données, l'enseignement, la QA, les tests d'API et le développement logiciel sécurisé. Elle travaille actuellement au service TI de l'Université d'Ottawa, contribuant au développement logiciel, aux tests d'API, à la QA, aux tests de performance et aux initiatives SSDLC/sécurité.",
+        },
+        security: {
+          answer:
+            "La cybersécurité est l'un des domaines d'intérêt principaux de Hajer. Elle travaille avec des pratiques de développement sécurisé, des activités SSDLC, des considérations de sécurité API, des tests d'authentification et d'autorisation, des concepts SSO/SAML et une QA axée sur la sécurité. Elle s'intéresse particulièrement à la construction de systèmes à la fois fonctionnels, sécurisés et fiables.",
+        },
+        skills: {
+          answer:
+            "Les compétences techniques de Hajer incluent :\n• Langages : Python, Java, JavaScript, TypeScript, C/C++, SQL\n• Web & Logiciel : React, Next.js, Node.js, .NET, REST APIs\n• QA & Tests : Postman, JMeter, tests d'API, tests de performance, tests de régression\n• DevOps : Git, GitHub, GitLab, CI/CD, Docker, Linux\n• Sécurité : SSDLC, sécurité des API, authentification, autorisation, concepts SSO/SAML\n• IA/ML : OpenAI, PyTorch, OpenCV, automatisation intelligente",
+        },
+        projects: {
+          answer:
+            "Hajer a travaillé sur plus de 10 projets en développement logiciel, cybersécurité, IA, automatisation et technologies web. Parmi les projets mis en avant :\n• DriveSense — système de détection de somnolence du conducteur utilisant PyTorch, OpenCV et React/TypeScript.\n• NutriCoach — chatbot IA pour conseils nutritionnels.\n• Smart Home Automation — projet IoT avec ESP32 et technologies web.\n• Portfolio personnel — site moderne construit avec Next.js, TypeScript, Tailwind CSS, GitHub et Vercel.",
+        },
+        contact: {
+          answer:
+            "Vous pouvez contacter Hajer via le formulaire de contact du portfolio, par email à hajerfguir@gmail.com, la contacter sur LinkedIn à linkedin.com/in/hajer-fguir, ou consulter son travail sur GitHub à github.com/hajerfguir.",
+        },
+        education: {
+          answer:
+            "Hajer est titulaire d'un baccalauréat en génie informatique de l'Université d'Ottawa. Son parcours académique couvre la cybersécurité, l'intelligence artificielle, les structures de données et algorithmes, les systèmes d'exploitation, les systèmes embarqués, l'architecture des ordinateurs et le génie logiciel.",
+        },
+        availability: {
+          answer:
+            "Hajer est ouverte à des opportunités significatives en développement logiciel, cybersécurité, automatisation QA, tests d'API, IA et ingénierie logicielle sécurisée. Le meilleur moyen de la joindre est via le formulaire de contact du portfolio ou par email à hajerfguir@gmail.com.",
+        },
+        ai: {
+          answer:
+            "Hajer s'intéresse à l'intersection de l'IA, de l'automatisation et du logiciel sécurisé. Son expérience inclut des projets IA, du travail avec PyTorch/OpenCV, des applications type chatbot et l'exploration de l'IA pour améliorer le développement, les tests et l'expérience utilisateur.",
+        },
+        devops: {
+          answer:
+            "Hajer possède de l'expérience en DevOps et automatisation, incluant Git, GitHub, GitLab, workflows CI/CD, Docker, Linux, pratiques de déploiement et automatisation des tests. Elle s'intéresse à la façon dont DevOps et SSDLC rendent la livraison logicielle plus sûre et fiable.",
+        },
+        about: {
+          answer:
+            "Hajer Fguir est développeuse logiciel et diplômée en génie informatique, passionnée par la cybersécurité, l'IA, l'automatisation et l'impact communautaire. Elle aime transformer des idées en expériences numériques sécurisées, évolutives et intelligentes.",
+        },
+        community: {
+          answer:
+            "L'implication communautaire fait partie intégrante du parcours de Hajer. Son expérience couvre plus de 5 organisations et inclut l'enseignement, le mentorat, l'entrepreneuriat, l'informatique universitaire et la construction de technologies à impact réel.",
+        },
+        certification: {
+          answer:
+            "Hajer a des reconnaissances académiques et des certifications techniques liées au développement logiciel, à l'IA, à l'apprentissage automatique, à Git/GitHub et au développement front-end. Elle continue d'apprendre et d'élargir ses compétences en cybersécurité, en IA et en ingénierie logicielle sécurisée.",
+        },
       },
     },
   },
