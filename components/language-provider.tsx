@@ -166,9 +166,9 @@ const translations: Record<Locale, any> = {
           description:
             "An intelligent driver alert system designed to monitor driver attentiveness in real time using sensors, computer vision, and machine-learning-based detection.",
           highlights: [
-            "Detects signs of drowsiness, fatigue, or distress",
-            "Provides real-time driver alerts for unsafe behavior",
-            "Logs events to a cloud platform to support road safety",
+            "Detects signs of drowsiness, fatigue, or distress.",
+            "Provides real-time driver alerts for unsafe behavior.",
+            "Logs events to a cloud platform to support road safety.",
           ],
         },
         smart_home: {
@@ -177,9 +177,9 @@ const translations: Record<Locale, any> = {
           description:
             "A real-time smart home automation system that enables touchless control of lights, fans, and temperature using hand gestures and a locally hosted web interface.",
           highlights: [
-            "Gesture-based control using APDS-9960 sensor",
-            "Real-time sensor processing with ESP32 and FreeRTOS",
-            "Local web interface for remote monitoring and control",
+            "Gesture-based control using APDS-9960 sensor.",
+            "Real-time sensor processing with ESP32 and FreeRTOS.",
+            "Local web interface for remote monitoring and control.",
           ],
         },
         nutricoach: {
@@ -188,9 +188,9 @@ const translations: Record<Locale, any> = {
           description:
             "An AI-powered chatbot that provides personalized nutrition guidance based on user goals and input through an interactive Gradio interface.",
           highlights: [
-            "Personalized nutrition recommendations based on user input",
-            "User-friendly interface hosted on Hugging Face Spaces",
-            "Voice interaction support using gTTS",
+            "Personalized nutrition recommendations based on user input.",
+            "User-friendly interface hosted on Hugging Face Spaces.",
+            "Voice interaction support using gTTS.",
           ],
         },
         portfolio: {
@@ -199,9 +199,9 @@ const translations: Record<Locale, any> = {
           description:
             "A modern personal portfolio website designed to showcase my background, experience, projects, skills, and professional journey in a clean and interactive way.",
           highlights: [
-            "Built with a responsive and professional user interface",
-            "Includes interactive project navigation and smooth animations",
-            "Prepared for future deployment with a custom domain",
+            "Built with a responsive and professional user interface.",
+            "Includes interactive project navigation and smooth animations.",
+            "Prepared for future deployment with a custom domain.",
           ],
         },
         mglam: {
@@ -210,9 +210,9 @@ const translations: Record<Locale, any> = {
           description:
             "A modern beauty salon website designed to showcase services, support appointment booking, and provide a clean and elegant user experience.",
           highlights: [
-            "Responsive and elegant salon website interface",
-            "Service showcase and appointment-focused design",
-            "Hosted live using GitHub Pages",
+            "Responsive and elegant salon website interface.",
+            "Service showcase and appointment-focused design.",
+            "Hosted live using GitHub Pages.",
           ],
         },
         uart: {
@@ -221,9 +221,9 @@ const translations: Record<Locale, any> = {
           description:
             "A UART communication system designed in VHDL with transmitter, receiver, and programmable baud rate generator for serial communication.",
           highlights: [
-            "Designed transmitter, receiver, and baud rate generator",
-            "Performed loopback testing with MAX232",
-            "Integrated UART with a traffic light controller for debugging",
+            "Designed transmitter, receiver, and baud rate generator.",
+            "Performed loopback testing with MAX232.",
+            "Integrated UART with a traffic light controller for debugging.",
           ],
         },
         mips: {
@@ -232,9 +232,9 @@ const translations: Record<Locale, any> = {
           description:
             "A 5-stage pipelined RISC processor designed in VHDL, integrating control and datapaths with pipeline registers on an Altera DE2 FPGA.",
           highlights: [
-            "Implemented IF, ID, EX, MEM, and WB pipeline stages",
-            "Designed hazard detection and data forwarding units",
-            "Validated timing, clock frequency, and execution cycles",
+            "Implemented IF, ID, EX, MEM, and WB pipeline stages.",
+            "Designed hazard detection and data forwarding units.",
+            "Validated timing, clock frequency, and execution cycles.",
           ],
         },
       },
@@ -566,9 +566,9 @@ const translations: Record<Locale, any> = {
           subtitle: "Projet de fin d'études · LockedIn LTD",
           description: "Un système d'alerte conducteur intelligent conçu pour surveiller l'attention du conducteur en temps réel en utilisant des capteurs, la vision par ordinateur et des modèles d'apprentissage automatique.",
           highlights: [
-            "Détecte les signes de somnolence, fatigue ou détresse",
-            "Fournit des alertes en temps réel pour comportements dangereux",
-            "Enregistre les événements sur une plateforme cloud pour soutenir la sécurité routière",
+            "Détecte les signes de somnolence, fatigue ou détresse.",
+            "Fournit des alertes en temps réel pour comportements dangereux.",
+            "Enregistre les événements sur une plateforme cloud pour soutenir la sécurité routière.",
           ],
         },
         smart_home: {
@@ -576,9 +576,9 @@ const translations: Record<Locale, any> = {
           subtitle: "Projet systèmes embarqués",
           description: "Système domotique en temps réel permettant le contrôle sans contact des lumières, ventilateurs et température via des gestes de la main et une interface web locale.",
           highlights: [
-            "Contrôle par gestes utilisant le capteur APDS-9960",
-            "Traitement temps réel des capteurs avec ESP32 et FreeRTOS",
-            "Interface web locale pour surveillance et contrôle à distance",
+            "Contrôle par gestes utilisant le capteur APDS-9960.",
+            "Traitement temps réel des capteurs avec ESP32 et FreeRTOS.",
+            "Interface web locale pour surveillance et contrôle à distance.",
           ],
         },
         nutricoach: {
@@ -586,9 +586,9 @@ const translations: Record<Locale, any> = {
           subtitle: "Projet chatbot IA",
           description: "Un chatbot IA fournissant des conseils nutritionnels personnalisés selon les objectifs et les entrées de l'utilisateur via une interface Gradio interactive.",
           highlights: [
-            "Recommandations nutritionnelles personnalisées selon les entrées utilisateur",
-            "Interface conviviale hébergée sur Hugging Face Spaces",
-            "Prise en charge de l'interaction vocale via gTTS",
+            "Recommandations nutritionnelles personnalisées selon les entrées utilisateur.",
+            "Interface conviviale hébergée sur Hugging Face Spaces.",
+            "Prise en charge de l'interaction vocale via gTTS.",
           ],
         },
         portfolio: {
@@ -596,9 +596,9 @@ const translations: Record<Locale, any> = {
           subtitle: "Projet frontend",
           description: "Un portfolio moderne conçu pour présenter mon parcours, mes projets, compétences et expérience de manière claire et interactive.",
           highlights: [
-            "Conçu avec une interface réactive et professionnelle",
-            "Inclut une navigation interactive des projets et animations fluides",
-            "Prêt pour un déploiement futur avec un domaine personnalisé",
+            "Conçu avec une interface réactive et professionnelle.",
+            "Inclut une navigation interactive des projets et animations fluides.",
+            "Prêt pour un déploiement futur avec un domaine personnalisé.",
           ],
         },
         mglam: {
@@ -606,9 +606,9 @@ const translations: Record<Locale, any> = {
           subtitle: "Projet web",
           description: "Un site moderne pour salon de beauté présentant les services, la prise de rendez-vous et une expérience utilisateur élégante.",
           highlights: [
-            "Interface salon responsive et élégante",
-            "Présentation des services et design axé prise de rendez-vous",
-            "Hébergement en direct via GitHub Pages",
+            "Interface salon responsive et élégante.",
+            "Présentation des services et design axé prise de rendez-vous.",
+            "Hébergement en direct via GitHub Pages.",
           ],
         },
         uart: {
@@ -616,9 +616,9 @@ const translations: Record<Locale, any> = {
           subtitle: "Projet systèmes numériques",
           description: "Un système de communication UART conçu en VHDL avec émetteur, récepteur et générateur de débit binaire programmable pour la communication série.",
           highlights: [
-            "Conception de l'émetteur, du récepteur et du générateur de débit",
-            "Tests en boucle avec MAX232",
-            "Intégration de l'UART avec un contrôleur de feux de circulation pour le débogage",
+            "Conception de l'émetteur, du récepteur et du générateur de débit.",
+            "Tests en boucle avec MAX232.",
+            "Intégration de l'UART avec un contrôleur de feux de circulation pour le débogage.",
           ],
         },
         mips: {
@@ -626,9 +626,9 @@ const translations: Record<Locale, any> = {
           subtitle: "Conception VHDL / FPGA",
           description: "Processeur RISC pipeline 5 étapes conçu en VHDL, intégrant contrôle et datapaths avec registres de pipeline sur une FPGA Altera DE2.",
           highlights: [
-            "Implémentation des étapes IF, ID, EX, MEM et WB",
-            "Conception de la détection des hazards et de l'unité de forwarding",
-            "Validation du timing, de la fréquence d'horloge et des cycles d'exécution",
+            "Implémentation des étapes IF, ID, EX, MEM et WB.",
+            "Conception de la détection des hazards et de l'unité de forwarding.",
+            "Validation du timing, de la fréquence d'horloge et des cycles d'exécution.",
           ],
         },
       },
