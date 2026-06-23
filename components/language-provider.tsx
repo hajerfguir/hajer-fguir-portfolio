@@ -426,7 +426,7 @@ const translations: Record<Locale, any> = {
       name: "Hajer Fguir",
       role: "Développeuse logiciel",
       description:
-        "Construire des technologies sécurisées, évolutives et impactantes. Passionnée par la création de solutions logicielles fiables et l'exploration de la façon dont la cybersécurité, l'IA et l'automatisation peuvent améliorer la façon dont les systèmes sont conçus et protégés.",
+        "Conception de solutions technologiques sécurisées, évolutives et fiables. Passionnée par le développement logiciel, la cybersécurité, l’IA et l’automatisation pour concevoir et protéger des systèmes modernes.",
       cta: {
         viewProjects: "Voir les projets",
         contact: "Contactez-moi",
