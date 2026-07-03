@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.hajerfguir.com'),
 
-  title: 'Hajer Fguir | Software Developer',
+  title: 'Hajer Fguir | Portfolio',
   description:
     'Turning ideas into secure, scalable, and intelligent digital experiences.',
 
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: 'Hajer Fguir | Software Developer',
+    title: 'Hajer Fguir | Portfolio',
     description:
       'Turning ideas into secure, scalable, and intelligent digital experiences.',
     url: 'https://www.hajerfguir.com',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Hajer Fguir | Software Developer',
+    title: 'Hajer Fguir | Portfolio',
     description:
       'Turning ideas into secure, scalable, and intelligent digital experiences.',
     images: ['/images/hero-1.png'],

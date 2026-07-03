@@ -237,6 +237,37 @@ const quickQuestions = [
   "How can I contact her?",
 ]
 
+const TERM_SYNONYMS: Record<string, string[]> = {
+  pipeline: ["pipeline", "ci/cd", "cicd"],
+  sso: ["sso", "single sign-on", "single sign on"],
+  saml: ["saml", "saml2"],
+  ssdlc: ["ssdlc", "software development life cycle", "secure development lifecycle"],
+  api: ["api", "rest api", "restful api", "application programming interface"],
+  docker: ["docker", "container"],
+  git: ["git", "github", "gitlab"],
+  react: ["react", "react.js", "reactjs"],
+  nextjs: ["next", "next.js", "nextjs"],
+  ai: ["ai", "artificial intelligence", "machine learning", "ml"],
+  cybersecurity: ["cybersecurity", "security", "secure"],
+}
+
+function getDefinition(input: string, definitions?: Record<string, string>) {
+  if (!definitions) return null
+
+  const normalized = input.toLowerCase()
+  for (const [term, synonyms] of Object.entries(TERM_SYNONYMS)) {
+    if (synonyms.some((syn) => normalized.includes(syn))) {
+      return definitions[term] || null
+    }
+  }
+
+  if (normalized.includes("what is") || normalized.includes("define") || normalized.includes("explain")) {
+    return definitions["general"] || null
+  }
+
+  return null
+}
+
 // getResponse will be defined inside the component so it can access translations
 
 function hasCookieConsentAccepted() {
@@ -322,10 +353,16 @@ export function AIAssistant() {
 
     if (best && best.intentId) {
       const translated = t(`ai.intents.${best.intentId}.answer`)
-      return typeof translated === "string" && translated !== `ai.intents.${best.intentId}.answer` ? translated : (best.answer || t("ai.intents.about.answer"))
+      return typeof translated === "string" && translated !== `ai.intents.${best.intentId}.answer`
+        ? translated
+        : best.answer || t("ai.intents.about.answer")
     }
 
-    return t("ai.initialMessage")
+    const definitions = t("ai.definitions") as Record<string, string> | undefined
+    const definition = getDefinition(input, definitions)
+    if (definition) return definition
+
+    return t("ai.fallbackResponse")
   }
 
   useEffect(() => {

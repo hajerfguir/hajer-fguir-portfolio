@@ -360,6 +360,34 @@ const translations: Record<Locale, any> = {
         "Hello! I'm Hajer's AI Portfolio Assistant. You can ask me about her experience, technical skills, cybersecurity work, projects, education, community involvement, or how to get in touch.",
       thanksResponse:
         "You're welcome! Feel free to ask anything else about Hajer's background, skills, projects, cybersecurity work, community involvement, or how to contact her.",
+      fallbackResponse:
+        "I can answer questions about Hajer's experience and skills, and also explain technical terms like pipeline, CI/CD, SSDLC, SSO, APIs, and Docker.",
+      definitions: {
+        pipeline:
+          "A deployment pipeline is a CI/CD process that automates building, testing, and delivering software changes in stages. It helps teams move code safely from development to production.",
+        sso:
+          "SSO stands for single sign-on. It allows users to sign in once and access multiple applications without logging in again for each one.",
+        saml:
+          "SAML is a security protocol used to exchange authentication and authorization data between parties, often for single sign-on across web applications.",
+        ssdlc:
+          "SSDLC stands for Secure Software Development Life Cycle. It integrates security practices into each phase of software development.",
+        api:
+          "An API (Application Programming Interface) allows different software systems to communicate with each other, typically by sending requests and receiving structured responses.",
+        docker:
+          "Docker is a containerization platform that packages applications and their dependencies into lightweight, portable containers.",
+        git:
+          "Git is a version control system used to track changes in source code and collaborate with other developers.",
+        react:
+          "React is a JavaScript library for building user interfaces using reusable components.",
+        nextjs:
+          "Next.js is a React framework for building server-rendered and statically generated web applications.",
+        ai:
+          "AI stands for artificial intelligence, which uses algorithms to perform tasks that normally require human intelligence, such as language understanding or image recognition.",
+        cybersecurity:
+          "Cybersecurity involves protecting systems, networks, and data from digital attacks and unauthorized access.",
+        general:
+          "I can help explain technical terms, provide information about Hajer's background, and guide you through her experience, skills, projects, and contact details.",
+      },
       intents: {
         experience: {
           answer:
@@ -754,6 +782,34 @@ const translations: Record<Locale, any> = {
         "Bonjour ! Je suis l'assistante IA du portfolio de Hajer. Vous pouvez me poser des questions sur son expérience, ses compétences techniques, son travail en cybersécurité, ses projets, sa formation, son implication communautaire ou comment la contacter.",
       thanksResponse:
         "De rien ! N'hésitez pas à poser d'autres questions sur le parcours, les compétences, les projets, la cybersécurité ou comment contacter Hajer.",
+      fallbackResponse:
+        "Je peux répondre aux questions sur le parcours de Hajer et expliquer des notions techniques comme pipeline, CI/CD, SSDLC, SSO, APIs et Docker.",
+      definitions: {
+        pipeline:
+          "Une pipeline est un processus CI/CD qui automatise la construction, les tests et la livraison des modifications logicielles en plusieurs étapes. Elle aide les équipes à déployer le code en toute sécurité.",
+        sso:
+          "Le SSO signifie single sign-on. Il permet à un utilisateur de se connecter une fois pour accéder à plusieurs applications sans se reconnecter.",
+        saml:
+          "SAML est un protocole de sécurité qui échange des données d'authentification et d'autorisation entre des services, souvent pour le single sign-on.",
+        ssdlc:
+          "Le SSDLC signifie Secure Software Development Life Cycle. Il intègre des pratiques de sécurité à chaque phase du développement logiciel.",
+        api:
+          "Une API (Application Programming Interface) permet à différents systèmes logiciels de communiquer entre eux, en envoyant des requêtes et en recevant des réponses structurées.",
+        docker:
+          "Docker est une plateforme de conteneurisation qui empaquette des applications et leurs dépendances dans des conteneurs légers et portables.",
+        git:
+          "Git est un système de contrôle de version utilisé pour suivre les modifications du code source et collaborer avec d'autres développeurs.",
+        react:
+          "React est une bibliothèque JavaScript pour construire des interfaces utilisateur avec des composants réutilisables.",
+        nextjs:
+          "Next.js est un framework React pour créer des applications web serveur et statiquement générées.",
+        ai:
+          "L'IA désigne l'intelligence artificielle, qui utilise des algorithmes pour accomplir des tâches nécessitant normalement une intelligence humaine, comme la compréhension du langage ou la reconnaissance d'images.",
+        cybersecurity:
+          "La cybersécurité consiste à protéger les systèmes, réseaux et données contre les attaques numériques et les accès non autorisés.",
+        general:
+          "Je peux expliquer des termes techniques, donner des informations sur le parcours de Hajer et vous guider sur son expérience, ses compétences, ses projets et ses contacts.",
+      },
       intents: {
         experience: {
           answer:
