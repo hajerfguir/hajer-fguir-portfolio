@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/sections/hero"
+import { FunGameSection } from "@/components/sections/fun-game"
 import { AboutSection } from "@/components/sections/about"
 import { ExperienceSection } from "@/components/sections/experience"
 import { ProjectsSection } from "@/components/sections/projects"
@@ -22,6 +23,7 @@ export default function Home() {
       <SkillsSection />
       <EducationSection />
       <ContactSection />
+      <FunGameSection />
       <Footer />
       <CookieConsent />
       <ScrollToTop />

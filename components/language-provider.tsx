@@ -36,6 +36,23 @@ const translations: Record<Locale, any> = {
     cta: {
       contact: "Contact Me",
     },
+    game: {
+      label: "Mini game",
+      title: "Wow, you made it all the way here?",
+      description:
+        "That is dedication. Since you have scrolled this far, why not change your mood with a quick X/O challenge against the computer? Check out my socials and explore more of what I have built.",
+      hint: "Try to line up three in a row.",
+      statusLabel: "Game status",
+      status: {
+        xTurn: "Your turn",
+        computerTurn: "Computer is thinking...",
+        xWins: "You win!",
+        oWins: "The computer wins!",
+        draw: "It’s a draw.",
+      },
+      footer: "Freshly built for a quick smile.",
+      reset: "Reset",
+    },
     footer: {
       quickLinks: "Quick Links",
       connect: "Connect",
@@ -464,6 +481,23 @@ const translations: Record<Locale, any> = {
     },
     cta: {
       contact: "Contactez-moi",
+    },
+    game: {
+      label: "Mini-jeu",
+      title: "Wow, vous êtes arrivé jusqu’ici ?",
+      description:
+        "C’est du dévouement. Puisque vous avez fait défiler jusqu’ici, pourquoi ne pas changer d’humeur avec un rapide défi X/O contre l’ordinateur ? Consultez mes réseaux sociaux et découvrez encore plus de ce que j’ai créé.",
+      hint: "Essayez de faire trois cases alignées.",
+      statusLabel: "État du jeu",
+      status: {
+        xTurn: "À votre tour",
+        computerTurn: "L’ordinateur réfléchit...",
+        xWins: "Vous avez gagné !",
+        oWins: "L’ordinateur a gagné !",
+        draw: "Match nul.",
+      },
+      footer: "Conçu pour un petit sourire.",
+      reset: "Réinitialiser",
     },
     footer: {
       quickLinks: "Liens rapides",
