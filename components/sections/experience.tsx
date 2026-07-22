@@ -72,6 +72,7 @@ const experiences = [
     id: "novasoft",
     company: "Novasoft Vision Incorporated",
     organizationUrl: "https://novasoftvision.com/",
+    showWebsiteLink: false,
     logo: "/images/novasoft Logo.png",
     role: "Co-Founder & Software Developer",
     type: "Entrepreneurship",
@@ -166,36 +167,56 @@ export function ExperienceSection() {
                     {/* Header */}
                     <div className="flex items-start justify-between gap-4 mb-4">
                       <div className="flex items-center gap-4">
-                        <Link
-                          href={exp.organizationUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Visit ${exp.company} website`}
-                          className="w-20 h-20 rounded-xl bg-card flex items-center justify-center flex-shrink-0 overflow-hidden border border-border/50 hover:border-primary/40 hover:scale-105 transition-all duration-300"
-                        >
-                          {exp.logo ? (
-                            <Image
-                              src={exp.logo}
-                              alt={`${exp.company} logo`}
-                              width={90}
-                              height={90}
-                              className="h-full w-full object-contain p-1"
-                            />
-                          ) : (
-                            <Building2 className="w-7 h-7 text-primary" />
-                          )}
-                        </Link>
-
-                        <div>
+                        {exp.showWebsiteLink === false ? (
+                          <div className="w-20 h-20 rounded-xl bg-card flex items-center justify-center flex-shrink-0 overflow-hidden border border-border/50">
+                            {exp.logo ? (
+                              <Image
+                                src={exp.logo}
+                                alt={`${exp.company} logo`}
+                                width={90}
+                                height={90}
+                                className="h-full w-full object-contain p-1"
+                              />
+                            ) : (
+                              <Building2 className="w-7 h-7 text-primary" />
+                            )}
+                          </div>
+                        ) : (
                           <Link
                             href={exp.organizationUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group/link inline-flex items-center gap-1 font-semibold text-foreground hover:text-primary transition-colors"
+                            aria-label={`Visit ${exp.company} website`}
+                            className="w-20 h-20 rounded-xl bg-card flex items-center justify-center flex-shrink-0 overflow-hidden border border-border/50 hover:border-primary/40 hover:scale-105 transition-all duration-300"
                           >
-                            {exp.company}
-                            <ExternalLink className="w-3.5 h-3.5 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                            {exp.logo ? (
+                              <Image
+                                src={exp.logo}
+                                alt={`${exp.company} logo`}
+                                width={90}
+                                height={90}
+                                className="h-full w-full object-contain p-1"
+                              />
+                            ) : (
+                              <Building2 className="w-7 h-7 text-primary" />
+                            )}
                           </Link>
+                        )}
+
+                        <div>
+                          {exp.showWebsiteLink === false ? (
+                            <p className="font-semibold text-foreground">{exp.company}</p>
+                          ) : (
+                            <Link
+                              href={exp.organizationUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group/link inline-flex items-center gap-1 font-semibold text-foreground hover:text-primary transition-colors"
+                            >
+                              {exp.company}
+                              <ExternalLink className="w-3.5 h-3.5 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                            </Link>
+                          )}
 
                           <p className="text-sm text-muted-foreground">
                             {get(`experience.items.${exp.id}.location`, exp.location)}
