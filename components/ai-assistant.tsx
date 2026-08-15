@@ -417,13 +417,43 @@ export function AIAssistant() {
     setIsOpen((prev) => !prev)
   }
 
-  const sendQuestion = (question: string) => {
+  const persistQuestion = async (question: string) => {
+    const entry = {
+      question,
+      timestamp: new Date().toISOString(),
+      locale,
+    }
+
+    try {
+      if (typeof window !== "undefined") {
+        const existing = JSON.parse(localStorage.getItem("hajer-ai-questions") || "[]")
+        const next = [...existing, entry].slice(-100)
+        localStorage.setItem("hajer-ai-questions", JSON.stringify(next))
+      }
+    } catch (error) {
+      console.error("Unable to save AI question locally:", error)
+    }
+
+    try {
+      await fetch("/api/ai-logs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(entry),
+      })
+    } catch (error) {
+      console.error("Unable to save AI question remotely:", error)
+    }
+  }
+
+  const sendQuestion = async (question: string) => {
     const text = question.trim()
     if (!text) return
 
     setMessages((prev) => [...prev, { role: "user", content: text }])
     setInput("")
     setIsTyping(true)
+
+    await persistQuestion(text)
 
     const reply = getResponse(text)
 
@@ -547,7 +577,7 @@ export function AIAssistant() {
                   {t("ai.quickQuestions").map((q: string, i: number) => (
                     <button
                       key={i}
-                      onClick={() => sendQuestion(q)}
+                      onClick={() => void sendQuestion(q)}
                       className="px-2 py-1 text-xs rounded-md bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors cursor-pointer"
                     >
                       {q}
@@ -561,7 +591,7 @@ export function AIAssistant() {
               <form
                 onSubmit={(e) => {
                   e.preventDefault()
-                  sendQuestion(input)
+                  void sendQuestion(input)
                 }}
                 className="flex gap-2"
               >

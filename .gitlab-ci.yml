@@ -1,0 +1,37 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  NODE_VERSION: "20"
+
+cache:
+  paths:
+    - .pnpm-store/
+
+build:
+  stage: build
+  image: node:${NODE_VERSION}
+  script:
+    - corepack enable
+    - corepack prepare pnpm@latest --activate
+    - pnpm install --frozen-lockfile
+    - pnpm lint || true
+    - pnpm build
+  artifacts:
+    paths:
+      - .next
+    expire_in: 1h
+
+deploy:
+  stage: deploy
+  image: node:${NODE_VERSION}
+  only:
+    - main
+  script:
+    - corepack enable
+    - corepack prepare pnpm@latest --activate
+    - pnpm install --frozen-lockfile --prod
+    - npx vercel --token "$VERCEL_TOKEN" --prod --confirm
+  environment:
+    name: production
