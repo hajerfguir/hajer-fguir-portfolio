@@ -1,65 +1,72 @@
-# Hajer Fguir — Portfolio
+# Hajer Fguir Portfolio
 
-[Live Demo](https://www.hajerfguir.com) • Contact: hajer@example.com
+Professional portfolio built with Next.js, React, TypeScript, and Tailwind CSS.
 
-- **Stack:** Next.js, React, TypeScript, Tailwind CSS, Vercel
-- **Status:** Personal portfolio (showcases projects, case studies, and contact)
+Live: https://www.hajerfguir.com
+Repository: https://github.com/hajerfguir/hajer-fguir-portfolio
 
-![hero](public/images/hero-1.png)
+## Overview
 
-## Quick Start
+This project is a modern portfolio website for showcasing professional experience, projects, skills, education, and contact information. It uses a clean, responsive interface and includes secure server-side email handling through Resend.
 
-Install dependencies and run locally:
+## Tech stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Radix UI
+- Resend
+- GitHub Actions
+- Vercel
+
+## CI/CD flow
+
+- Code is pushed to GitHub.
+- GitHub Actions runs dependency installation, linting, and a production build.
+- If checks pass, the app is deployed to Vercel.
+- Deployment is blocked if CI fails.
+
+## Local development
 
 ```bash
+git clone https://github.com/hajerfguir/hajer-fguir-portfolio.git
+cd hajer-fguir-portfolio
 pnpm install
 pnpm dev
 ```
 
-Build for production:
+Create a local environment file if needed:
 
 ```bash
-pnpm build
-pnpm start
+touch .env.local
 ```
 
-## Project Highlights
+Required secret:
 
-- Interactive hero with demo GIF/video
-- AI assistant demo (see /app/ai-logs)
-- Well-structured design system in `components/` and `ui/`
+```env
+RESEND_API_KEY=your_resend_api_key
+```
 
-## Case Studies
+Then open:
 
-For each featured project include:
+```text
+http://localhost:3000
+```
 
-1. Problem & context
-2. Your role and responsibilities
-3. Approach & tech used
-4. Outcome & metrics
-5. Link to live demo and code
+## Production setup
 
-## Development & CI
+The app is deployed on Vercel and uses environment variables for sensitive values. The contact API keeps the Resend key server-side and does not expose it to the browser.
 
-This repository uses `pnpm` and has a GitHub Actions CI workflow that runs lint and build on push/PR.
+## Commands
 
-## Accessibility & Performance
+```bash
+pnpm install
+pnpm run lint
+pnpm run build
+pnpm dev
+```
 
-- Lighthouse and axe audits are recommended; aim for high accessibility and performance scores.
+## Notes
 
-## Badges
-
-![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)
-![Lighthouse](https://img.shields.io/badge/lighthouse-🏆-blue)
-
-## Contributing
-
-Small contributions welcome — open an issue or PR.
-
-## Contact
-
-- Email: hajer@example.com
-- LinkedIn: https://www.linkedin.com/in/hajerfguir
-
----
-_Template generated and edited to highlight recruiter-facing content. Replace placeholders (OWNER/REPO, contact links, demo URL) with real values._
+This project is designed to be simple, fast, and deployment-friendly, with CI/CD validating the app before production release.
