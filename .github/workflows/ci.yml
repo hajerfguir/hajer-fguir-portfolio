@@ -3,6 +3,7 @@ name: CI
 on:
   push:
     branches: [main, master]
+
   pull_request:
     branches: [main, master]
 
@@ -12,11 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Download the repository onto the GitHub runner
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      # 2. Install pnpm + Node.js
       - name: Setup pnpm and Node.js
         uses: pnpm/setup@v1
         with:
@@ -25,34 +24,31 @@ jobs:
           cache: true
           install: false
 
-      # 3. Install exact dependencies from pnpm-lock.yaml
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # 4. Run ESLint
       - name: Lint
         run: pnpm run lint
 
-      # 5. Test that Next.js can create a production build
+
       - name: Build
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: pnpm run build
+
 
   deploy:
     name: Deploy to Vercel
     runs-on: ubuntu-latest
 
-    # Deployment only starts if the build job succeeded
     needs: build
 
-    # Only deploy pushes to main
     if: github.ref == 'refs/heads/main'
 
     steps:
-      # 1. Download repository
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      # 2. Install pnpm + Node.js
       - name: Setup pnpm and Node.js
         uses: pnpm/setup@v1
         with:
@@ -60,7 +56,6 @@ jobs:
           runtime: node@24
           install: false
 
-      # 3. Deploy production version to Vercel
       - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.CI_CD_TOKEN }}
