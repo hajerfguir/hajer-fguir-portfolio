@@ -4,14 +4,25 @@ __v0_devtools.tsx
 __v0_jsx-dev-runtime.ts
 .snowflake/
 .v0-trash/
+
+# Vercel
 .vercel/
 
 # Environment variables
-.env*.local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Common ignores
-node_modules
+# Keep environment template files if added later
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Next.js
 .next/
+
+# macOS
 .DS_Store
-.vercel
-.env*
