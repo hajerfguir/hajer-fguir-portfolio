@@ -291,13 +291,20 @@ const translations: Record<Locale, any> = {
       ],
       certificationCards: [
         {
+          title: "Cisco",
+          issuer: "Cybersecurity Defense Analyst Career Path -- Intermediate",
+          date: "Aug 2026",
+          url: "https://www.credly.com/badges/b3ef0625-6ffc-495a-af1b-a84f0bbb1348/linked_in?t=tjvuin",
+          courses: [],
+        },
+        {
           title: "AI, Generative AI & Machine Learning",
           issuer: "365 Data Science",
           date: "Oct 2024 - Nov 2024",
           courses: [
-            "Intro to AI",
-            "Intro to ChatGPT and Generative AI",
-            "Machine Learning in Python",
+            { label: "Intro to AI", url: "https://learn.365datascience.com/c/86f61ca386/" },
+            { label: "ML in Python", url: "https://learn.365datascience.com/c/8211e07ee7/" },
+            { label: "ChatGPT", url: "https://learn.365datascience.com/c/cfcb89ada7/" },
           ],
         },
         {
@@ -305,13 +312,13 @@ const translations: Record<Locale, any> = {
           issuer: "365 Data Science",
           date: "Oct 2024 - Nov 2024",
           courses: [
-            "Intro to Data Engineering",
-            "Git and GitHub",
+            { label: "Data Engineering", url: "https://learn.365datascience.com/c/d6ebd86458/" },
+            { label: "Git & GitHub", url: "https://learn.365datascience.com/c/7b662126be/" },
           ],
         },
       ],
       moreInfo:
-        "Continuously expanding my knowledge through online learning in artificial intelligence, machine learning, data engineering, version control, and modern development practices.",
+        "Continuously advancing my knowledge in cybersecurity and artificial intelligence, always eager to learn, grow, and explore modern software development and security practices.",
     },
     contact: {
       label: "Get In Touch",
@@ -730,13 +737,20 @@ const translations: Record<Locale, any> = {
       ],
       certificationCards: [
         {
+          title: "Cisco",
+          issuer: "Parcours de carrière Analyste en défense de la cybersécurité -- Intermédiaire",
+          date: "Août 2026",
+          url: "https://www.credly.com/badges/b3ef0625-6ffc-495a-af1b-a84f0bbb1348/linked_in?t=tjvuin",
+          courses: [],
+        },
+        {
           title: "IA, IA générative & apprentissage automatique",
           issuer: "365 Data Science",
           date: "Oct 2024 - Nov 2024",
           courses: [
-            "Introduction à l'IA",
-            "Introduction à ChatGPT et l'IA générative",
-            "Apprentissage automatique en Python",
+            { label: "Introduction à l'IA", url: "https://learn.365datascience.com/c/86f61ca386/" },
+            { label: "Introduction à ChatGPT et l'IA générative", url: "https://learn.365datascience.com/c/cfcb89ada7/" },
+            { label: "Apprentissage automatique en Python", url: "https://learn.365datascience.com/c/8211e07ee7/" },
           ],
         },
         {
@@ -744,13 +758,13 @@ const translations: Record<Locale, any> = {
           issuer: "365 Data Science",
           date: "Oct 2024 - Nov 2024",
           courses: [
-            "Introduction à l'ingénierie des données",
-            "Git et GitHub",
+            { label: "Introduction à l'ingénierie des données", url: "https://learn.365datascience.com/c/d6ebd86458/" },
+            { label: "Git et GitHub", url: "https://learn.365datascience.com/c/7b662126be/" },
           ],
         },
       ],
       moreInfo:
-        "Je développe continuellement mes connaissances grâce à des cours en ligne en intelligence artificielle, apprentissage automatique, ingénierie des données, contrôle de version et pratiques de développement modernes.",
+        "Je fais progresser mes connaissances en cybersécurité et en intelligence artificielle, toujours désireuse d’apprendre, de grandir et d’explorer les pratiques modernes du développement logiciel et de la sécurité.",
     },
     cookie: {
       title: "Préférences des cookies",

@@ -5,19 +5,24 @@ import { Badge } from "@/components/ui/badge"
 import { SectionHeader } from "@/components/section-header"
 import { useTranslation } from "../language-provider"
 
+type CertificationCourse = string | { label: string; url?: string }
+
+type CertificationCard = {
+  title: string
+  issuer: string
+  date: string
+  url?: string
+  courses: CertificationCourse[]
+}
+
 export function EducationSection() {
   const { t } = useTranslation()
   const certificationData = t(
     "education.certificationCards"
-  ) as Array<{ title: string; issuer: string; date: string; courses: string[] }> | unknown
+  ) as Array<CertificationCard> | unknown
   const relevantCourseData = t("education.relevantCourses") as string[] | unknown
   const certificationList = Array.isArray(certificationData)
-    ? (certificationData as Array<{
-        title: string
-        issuer: string
-        date: string
-        courses: string[]
-      }>)
+    ? (certificationData as Array<CertificationCard>)
     : []
   const relevantCourseList = Array.isArray(relevantCourseData)
     ? (relevantCourseData as string[])
@@ -99,6 +104,10 @@ export function EducationSection() {
                   ))}
                 </div>
               </div>
+
+              <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
+                {t("education.moreInfo")}
+              </p>
             </div>
           </div>
 
@@ -122,7 +131,18 @@ export function EducationSection() {
                     <div className="space-y-2">
                       <div>
                         <h4 className="font-medium text-foreground mb-1">
-                          {cert.title}
+                          {cert.url ? (
+                            <a
+                              href={cert.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="underline-offset-4 hover:underline hover:text-primary transition-colors"
+                            >
+                              {cert.title}
+                            </a>
+                          ) : (
+                            cert.title
+                          )}
                         </h4>
                         <p className="text-sm text-muted-foreground">
                           {cert.issuer}
@@ -132,29 +152,43 @@ export function EducationSection() {
                         </p>
                       </div>
 
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        {cert.courses.map((course) => (
-                          <Badge
-                            key={course}
-                            variant="secondary"
-                            className="text-xs bg-secondary/50 hover:bg-secondary"
-                          >
-                            {course}
-                          </Badge>
-                        ))}
-                      </div>
+                      {cert.courses.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 pt-1">
+                          {cert.courses.map((course) => {
+                            const courseLabel =
+                              typeof course === "string" ? course : course.label
+                            const courseUrl =
+                              typeof course === "string" ? undefined : course.url
+
+                            return (
+                              <Badge
+                                key={courseLabel}
+                                variant="secondary"
+                                className="text-xs bg-secondary/50 hover:bg-secondary"
+                              >
+                                {courseUrl ? (
+                                  <a
+                                    href={courseUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="hover:text-primary transition-colors underline-offset-4 hover:underline"
+                                  >
+                                    {courseLabel}
+                                  </a>
+                                ) : (
+                                  courseLabel
+                                )}
+                              </Badge>
+                            )
+                          })}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Additional Info Card */}
-            <div className="p-6 rounded-xl bg-primary/5 border border-primary/10">
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {t("education.moreInfo")}
-              </p>
-            </div>
           </div>
         </div>
       </div>
