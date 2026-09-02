@@ -1,72 +1,77 @@
 # Hajer Fguir Portfolio
 
-Professional portfolio built with Next.js, React, TypeScript, and Tailwind CSS.
+A modern personal portfolio website built with Next.js, React, TypeScript, and Tailwind CSS to present academic background, professional experience, certifications, skills, and contact information.
 
-Live: https://www.hajerfguir.com
-Repository: https://github.com/hajerfguir/hajer-fguir-portfolio
+- Live portfolio: https://www.hajerfguir.com
+- GitHub repository: https://github.com/hajerfguir/hajer-fguir-portfolio
 
 ## Overview
 
-This project is a modern portfolio website for showcasing professional experience, projects, skills, education, and contact information. It uses a clean, responsive interface and includes secure server-side email handling through Resend.
+This portfolio is designed to showcase technical work, academic achievements, and professional interests in software engineering, cybersecurity, AI, and modern web development. The site includes a polished responsive layout, project highlights, educational background, and a contact form powered by a secure server-side API.
 
-## Tech stack
+## Tech Stack
 
-- Next.js
-- React
+- Next.js 16
+- React 19
 - TypeScript
 - Tailwind CSS
 - Radix UI
-- Resend
-- GitHub Actions
 - Vercel
+- Resend for email delivery
+- ESLint for code quality checks
 
-## CI/CD flow
+## Key Features
 
-- Code is pushed to GitHub.
-- GitHub Actions runs dependency installation, linting, and a production build.
-- If checks pass, the app is deployed to Vercel.
-- Deployment is blocked if CI fails.
+- Responsive portfolio layout for desktop and mobile devices
+- Sections for education, projects, experience, skills, and certifications
+- Dark-mode-inspired design and polished UI components
+- Contact form with secure backend email handling
+- CI-friendly setup for production deployment
 
-## Local development
+## Prerequisites
+
+Before running the project locally, make sure you have:
+
+- Node.js 18+
+- pnpm
+- A Resend API key for the contact form
+
+## Installation
 
 ```bash
 git clone https://github.com/hajerfguir/hajer-fguir-portfolio.git
 cd hajer-fguir-portfolio
 pnpm install
-pnpm dev
 ```
 
-Create a local environment file if needed:
+## Environment Variables
 
-```bash
-touch .env.local
-```
-
-Required secret:
+Create a `.env.local` file in the project root and add:
 
 ```env
 RESEND_API_KEY=your_resend_api_key
 ```
 
-Then open:
-
-```text
-http://localhost:3000
-```
-
-## Production setup
-
-The app is deployed on Vercel and uses environment variables for sensitive values. The contact API keeps the Resend key server-side and does not expose it to the browser.
-
-## Commands
+## Local Development
 
 ```bash
-pnpm install
-pnpm run lint
-pnpm run build
 pnpm dev
 ```
 
+Then open the local development URL shown in the terminal.
+
+## Production Scripts
+
+```bash
+pnpm lint
+pnpm build
+pnpm start
+```
+
+## Deployment
+
+This application is intended for deployment on Vercel. Environment variables are managed securely through the platform settings, and the contact API keeps sensitive credentials server-side instead of exposing them to the browser.
+
 ## Notes
 
-This project is designed to be simple, fast, and deployment-friendly, with CI/CD validating the app before production release.
+The project combines modern frontend tooling with clean design and production-ready deployment practices, making it suitable for showcasing technical expertise and professional work in a polished portfolio format.
