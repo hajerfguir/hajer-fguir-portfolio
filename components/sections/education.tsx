@@ -131,6 +131,9 @@ export function EducationSection() {
                     <div className="space-y-2">
                       <div>
                         <h4 className="font-medium text-foreground mb-1">
+                          {cert.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
                           {cert.url ? (
                             <a
                               href={cert.url}
@@ -138,14 +141,11 @@ export function EducationSection() {
                               rel="noreferrer"
                               className="underline-offset-4 hover:underline hover:text-primary transition-colors"
                             >
-                              {cert.title}
+                              {cert.issuer}
                             </a>
                           ) : (
-                            cert.title
+                            cert.issuer
                           )}
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          {cert.issuer}
                         </p>
                         <p className="text-xs text-muted-foreground mt-1">
                           {cert.date}

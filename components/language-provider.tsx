@@ -291,8 +291,8 @@ const translations: Record<Locale, any> = {
       ],
       certificationCards: [
         {
-          title: "Cisco",
-          issuer: "Cybersecurity Defense Analyst Career Path -- Intermediate",
+          title: "Cybersecurity Defense Analyst Career Path -- Intermediate",
+          issuer: "Cisco",
           date: "Aug 2026",
           url: "https://www.credly.com/badges/b3ef0625-6ffc-495a-af1b-a84f0bbb1348/linked_in?t=tjvuin",
           courses: [],
@@ -737,8 +737,8 @@ const translations: Record<Locale, any> = {
       ],
       certificationCards: [
         {
-          title: "Cisco",
-          issuer: "Parcours de carrière Analyste en défense de la cybersécurité -- Intermédiaire",
+          title: "Parcours de carrière Analyste en défense de la cybersécurité -- Intermédiaire",
+          issuer: "Cisco",
           date: "Août 2026",
           url: "https://www.credly.com/badges/b3ef0625-6ffc-495a-af1b-a84f0bbb1348/linked_in?t=tjvuin",
           courses: [],
