@@ -105,14 +105,17 @@ export function EducationSection() {
                 </div>
               </div>
 
-              <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
+            </div>
+
+            <div className="-mt-0.5 p-4 rounded-2xl border border-border/50 bg-card/80 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
+              <p className="text-[0.9rem] font-medium leading-relaxed text-foreground/90">
                 {t("education.moreInfo")}
               </p>
             </div>
           </div>
 
           {/* Certifications */}
-          <div className="space-y-6">
+          <div className="space-y-5">
             <h3 className="text-lg font-semibold text-foreground">
               {t("education.certifications")}
             </h3>
